@@ -71,12 +71,14 @@ class GojekContactAppTests: XCTestCase {
         let error: ContactServiceImpl.Error = .connectivity
         client.error = error
         
-        var capturedError: ContactServiceImpl.Error?
+        var capturedErrors: [ContactServiceImpl.Error] = []
         sut.loadContacts { error in
-            capturedError = error
+            if let error = error {
+                capturedErrors.append(error)
+            }
         }
         
-        XCTAssertEqual(capturedError, .connectivity)
+        XCTAssertEqual(capturedErrors, [.connectivity])
     }
     
     
