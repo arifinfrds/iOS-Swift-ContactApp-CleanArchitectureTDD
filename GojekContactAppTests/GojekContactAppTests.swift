@@ -17,8 +17,16 @@ protocol ContactService {
 }
 
 class ContactServiceImpl: ContactService {
+    private let client: HTTPClient
+    private let url: URL
+    
+    init(client: HTTPClient, url: URL) {
+        self.client = client
+        self.url = url
+    }
+    
     func loadContacts() {
-        
+        client.get(from: url)
     }
 }
 
@@ -26,14 +34,30 @@ class ContactServiceImpl: ContactService {
 class GojekContactAppTests: XCTestCase {
     
     func test_init_doesNotRequestDataFromURL() {
+        let url = URL(string: "https://any-url.com")!
         let client = HTTPClientSpy()
-        let _ = ContactServiceImpl()
+        let _ = ContactServiceImpl(client: client, url: url)
         
         XCTAssertEqual(client.requestedURL, nil)
     }
     
-    private class HTTPClientSpy {
+    func test_load_shouldRequestWithGivenURL() {
+        let url = URL(string: "https://any-url.com")!
+        let client = HTTPClientSpy()
+        let sut = ContactServiceImpl(client: client, url: url)
+        
+        sut.loadContacts()
+        
+        
+        XCTAssertEqual(client.requestedURL, url)
+    }
+    
+    private class HTTPClientSpy: HTTPClient {
         var requestedURL: URL?
+        
+        func get(from url: URL) {
+            self.requestedURL = url
+        }
     }
 
 }
