@@ -9,24 +9,30 @@ import XCTest
 @testable import GojekContactApp
 
 protocol HTTPClient {
-    func get(from url: URL)
+    func get(from url: URL, completion: @escaping (Error?) -> Void)
 }
 
 protocol ContactService {
-    func loadContacts()
+    func loadContacts(completion: @escaping (Error?) -> Void)
 }
 
-class ContactServiceImpl: ContactService {
+class ContactServiceImpl {
     private let client: HTTPClient
     private let url: URL
+    
+    enum Error: Swift.Error, Equatable {
+        case connectivity
+    }
     
     init(client: HTTPClient, url: URL) {
         self.client = client
         self.url = url
     }
     
-    func loadContacts() {
-        client.get(from: url)
+    func loadContacts(completion: @escaping (Error?) -> Void) {
+        client.get(from: url) { error in
+            completion(.connectivity)
+        }
     }
 }
 
@@ -44,7 +50,7 @@ class GojekContactAppTests: XCTestCase {
         let url = URL(string: "https://any-url.com")!
         let (sut, client) = makeSUT(url: url)
         
-        sut.loadContacts()
+        sut.loadContacts { _ in }
         
         XCTAssertEqual(client.requestedURLs, [url])
     }
@@ -53,10 +59,24 @@ class GojekContactAppTests: XCTestCase {
         let url = URL(string: "https://any-url.com")!
         let (sut, client) = makeSUT(url: url)
         
-        sut.loadContacts()
-        sut.loadContacts()
+        sut.loadContacts { _ in }
+        sut.loadContacts { _ in }
         
         XCTAssertEqual(client.requestedURLs, [url, url])
+    }
+    
+    func test_load_deliversErrorOnClientError() {
+        let url = URL(string: "https://any-url.com")!
+        let (sut, client) = makeSUT(url: url)
+        let error: ContactServiceImpl.Error = .connectivity
+        client.error = error
+        
+        var capturedError: ContactServiceImpl.Error?
+        sut.loadContacts { error in
+            capturedError = error
+        }
+        
+        XCTAssertEqual(capturedError, .connectivity)
     }
     
     
@@ -70,10 +90,18 @@ class GojekContactAppTests: XCTestCase {
     
     private class HTTPClientSpy: HTTPClient {
         var requestedURLs: [URL] = []
+        var error: Error?
         
-        func get(from url: URL) {
+        func get(from url: URL, completion: @escaping (Error?) -> Void) {
             self.requestedURLs.append(url)
+            if let error = error {
+                completion(error)
+            }
+        }
+        
+        func complete(with error: Error) {
+            self.error = error
         }
     }
-
+    
 }
