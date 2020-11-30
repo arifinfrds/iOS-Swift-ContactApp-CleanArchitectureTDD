@@ -35,16 +35,14 @@ class GojekContactAppTests: XCTestCase {
     
     func test_init_doesNotRequestDataFromURL() {
         let url = URL(string: "https://any-url.com")!
-        let client = HTTPClientSpy()
-        let _ = ContactServiceImpl(client: client, url: url)
+        let (_, client) = makeSUT(url: url)
         
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
     func test_load_shouldRequestWithGivenURL() {
         let url = URL(string: "https://any-url.com")!
-        let client = HTTPClientSpy()
-        let sut = ContactServiceImpl(client: client, url: url)
+        let (sut, client) = makeSUT(url: url)
         
         sut.loadContacts()
         
@@ -53,13 +51,21 @@ class GojekContactAppTests: XCTestCase {
     
     func test_loadTwice_shouldRequestWithGivenURLTwice() {
         let url = URL(string: "https://any-url.com")!
-        let client = HTTPClientSpy()
-        let sut = ContactServiceImpl(client: client, url: url)
+        let (sut, client) = makeSUT(url: url)
         
         sut.loadContacts()
         sut.loadContacts()
         
         XCTAssertEqual(client.requestedURLs, [url, url])
+    }
+    
+    
+    // MARK: - Helpers
+    
+    private func makeSUT(url: URL) -> (sut: ContactServiceImpl, client: HTTPClientSpy) {
+        let client = HTTPClientSpy()
+        let sut = ContactServiceImpl(client: client, url: url)
+        return (sut, client)
     }
     
     private class HTTPClientSpy: HTTPClient {
