@@ -76,7 +76,7 @@ class GojekContactAppTests: XCTestCase {
             }
         }
         let clientError = NSError(domain: NSURLErrorDomain, code: -1, userInfo: nil)
-        client.completions[0](clientError)
+        client.complete(with: clientError)
         
         XCTAssertEqual(capturedErrors, [.connectivity])
     }
@@ -97,6 +97,10 @@ class GojekContactAppTests: XCTestCase {
         func get(from url: URL, completion: @escaping (Error?) -> Void) {
             self.requestedURLs.append(url)
             self.completions.append(completion)
+        }
+        
+        func complete(with error: Error, at index: Int = 0) {
+            completions[index](error)
         }
     }
     
