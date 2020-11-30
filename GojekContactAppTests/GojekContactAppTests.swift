@@ -46,7 +46,7 @@ class GojekContactAppTests: XCTestCase {
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
-    func test_load_shouldRequestWithGivenURL() {
+    func test_loadContacts_shouldRequestWithGivenURL() {
         let url = URL(string: "https://any-url.com")!
         let (sut, client) = makeSUT(url: url)
         
@@ -55,7 +55,7 @@ class GojekContactAppTests: XCTestCase {
         XCTAssertEqual(client.requestedURLs, [url])
     }
     
-    func test_loadTwice_shouldRequestWithGivenURLTwice() {
+    func test_loadContactsTwice_shouldRequestWithGivenURLTwice() {
         let url = URL(string: "https://any-url.com")!
         let (sut, client) = makeSUT(url: url)
         
@@ -65,7 +65,7 @@ class GojekContactAppTests: XCTestCase {
         XCTAssertEqual(client.requestedURLs, [url, url])
     }
     
-    func test_load_deliversErrorOnClientError() {
+    func test_loadContacts_deliversErrorOnClientError() {
         let url = URL(string: "https://any-url.com")!
         let (sut, client) = makeSUT(url: url)
         let error: ContactServiceImpl.Error = .connectivity
