@@ -68,8 +68,6 @@ class GojekContactAppTests: XCTestCase {
     func test_loadContacts_deliversErrorOnClientError() {
         let url = URL(string: "https://any-url.com")!
         let (sut, client) = makeSUT(url: url)
-        let error: ContactServiceImpl.Error = .connectivity
-        client.error = error
         
         var capturedErrors: [ContactServiceImpl.Error] = []
         sut.loadContacts { error in
@@ -77,6 +75,8 @@ class GojekContactAppTests: XCTestCase {
                 capturedErrors.append(error)
             }
         }
+        let clientError = NSError(domain: NSURLErrorDomain, code: -1, userInfo: nil)
+        client.completions[0](clientError)
         
         XCTAssertEqual(capturedErrors, [.connectivity])
     }
@@ -92,17 +92,11 @@ class GojekContactAppTests: XCTestCase {
     
     private class HTTPClientSpy: HTTPClient {
         var requestedURLs: [URL] = []
-        var error: Error?
+        var completions: [(Error?) -> Void] = []
         
         func get(from url: URL, completion: @escaping (Error?) -> Void) {
             self.requestedURLs.append(url)
-            if let error = error {
-                completion(error)
-            }
-        }
-        
-        func complete(with error: Error) {
-            self.error = error
+            self.completions.append(completion)
         }
     }
     
