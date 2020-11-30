@@ -38,7 +38,7 @@ class GojekContactAppTests: XCTestCase {
         let client = HTTPClientSpy()
         let _ = ContactServiceImpl(client: client, url: url)
         
-        XCTAssertEqual(client.requestedURL, nil)
+        XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
     func test_load_shouldRequestWithGivenURL() {
@@ -48,15 +48,25 @@ class GojekContactAppTests: XCTestCase {
         
         sut.loadContacts()
         
+        XCTAssertEqual(client.requestedURLs, [url])
+    }
+    
+    func test_loadTwice_shouldRequestWithGivenURLTwice() {
+        let url = URL(string: "https://any-url.com")!
+        let client = HTTPClientSpy()
+        let sut = ContactServiceImpl(client: client, url: url)
         
-        XCTAssertEqual(client.requestedURL, url)
+        sut.loadContacts()
+        sut.loadContacts()
+        
+        XCTAssertEqual(client.requestedURLs, [url, url])
     }
     
     private class HTTPClientSpy: HTTPClient {
-        var requestedURL: URL?
+        var requestedURLs: [URL] = []
         
         func get(from url: URL) {
-            self.requestedURL = url
+            self.requestedURLs.append(url)
         }
     }
 
