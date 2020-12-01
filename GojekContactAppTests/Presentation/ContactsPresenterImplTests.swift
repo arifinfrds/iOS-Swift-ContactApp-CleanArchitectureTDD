@@ -13,6 +13,7 @@ class ContactsPresenterImpl {
     private let interactor: LoadContactsInteractor
     
     var users: [User] = []
+    var errorMessage: String?
     
     init(interactor: LoadContactsInteractor) {
         self.interactor = interactor
@@ -27,8 +28,8 @@ class ContactsPresenterImpl {
             switch result {
             case .success(let users):
                 self.users = users
-            case .failure(_):
-                break
+            case .failure(let error):
+                self.errorMessage = error.localizedDescription
             }
         }
     }
@@ -40,6 +41,17 @@ class ContactsPresenterImplTests: XCTestCase {
         let (_ , client) = makeSUT()
         
         XCTAssertTrue(client.requestedURLs.isEmpty)
+    }
+    
+    func test_onLoad_deliversErrorWithAnyError() {
+        let (sut, client) = makeSUT()
+        
+        sut.onLoad()
+        
+        let usersJSONData = makeJSONData(forResourceJsonName: "users")
+        client.complete(withStatusCode: 400, data: usersJSONData)
+        
+        XCTAssertNotNil(sut.errorMessage)
     }
     
     func test_onLoad_deliversUsersWithValidUsers() {
