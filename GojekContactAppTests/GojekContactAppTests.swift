@@ -8,8 +8,13 @@
 import XCTest
 @testable import GojekContactApp
 
+enum HTTPClientResult {
+    case success(URLResponse)
+    case failure(Error)
+}
+
 protocol HTTPClient {
-    func get(from url: URL, completion: @escaping (URLResponse?, Error?) -> Void)
+    func get(from url: URL, completion: @escaping (HTTPClientResult) -> Void)
 }
 
 protocol ContactService {
@@ -31,10 +36,11 @@ class ContactServiceImpl {
     }
     
     func loadContacts(completion: @escaping (Error?) -> Void) {
-        client.get(from: url) { (response, error) in
-            if let _ = response {
+        client.get(from: url) { result in
+            switch result {
+            case .success(_):
                 completion(.invalidData)
-            } else {
+            case .failure(_):
                 completion(.connectivity)
             }
         }
@@ -113,17 +119,17 @@ class GojekContactAppTests: XCTestCase {
     }
     
     private class HTTPClientSpy: HTTPClient {
-        var messages: [(url: URL, completion: (URLResponse?, Error?) -> Void)] = []
+        var messages: [(url: URL, completion: (HTTPClientResult) -> Void)] = []
         var requestedURLs: [URL] {
             return messages.map { $0.url }
         }
         
-        func get(from url: URL, completion: @escaping (URLResponse?, Error?) -> Void) {
+        func get(from url: URL, completion: @escaping (HTTPClientResult) -> Void) {
             messages.append((url, completion))
         }
         
         func complete(with error: Error, at index: Int = 0) {
-            messages[index].completion(nil, error)
+            messages[index].completion(.failure(error))
         }
         
         func complete(withStatusCode code: Int, at index: Int = 0) {
@@ -132,8 +138,8 @@ class GojekContactAppTests: XCTestCase {
                 statusCode: code,
                 httpVersion: nil,
                 headerFields: nil
-            )
-            messages[index].completion(response, nil)
+            )!
+            messages[index].completion(.success(response))
         }
     }
     
