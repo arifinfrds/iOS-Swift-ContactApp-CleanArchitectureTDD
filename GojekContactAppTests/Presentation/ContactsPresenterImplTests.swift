@@ -19,6 +19,10 @@ class ContactsPresenterImpl {
     }
     
     func onLoad() {
+        executeLoadContactsInteractor()
+    }
+    
+    private func executeLoadContactsInteractor() {
         interactor.execute { result in
             switch result {
             case .success(let users):
