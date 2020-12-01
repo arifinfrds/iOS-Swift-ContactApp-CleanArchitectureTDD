@@ -8,78 +8,6 @@
 import XCTest
 @testable import GojekContactApp
 
-
-enum HTTPClientResult {
-    case success(URLResponse, Data)
-    case failure(Error)
-}
-
-protocol HTTPClient {
-    func get(from url: URL, completion: @escaping (HTTPClientResult) -> Void)
-}
-
-//protocol ContactService {
-//    func loadContacts(completion: @escaping (URLResponse?, Error?) -> Void)
-//}
-
-class ContactServiceImpl {
-    private let client: HTTPClient
-    private let url: URL
-    
-    enum Error: Swift.Error, Equatable {
-        case connectivity
-        case invalidData
-    }
-    
-    enum LoadContactsResult {
-        case success(_ items: [UserResponseDTO])
-        case failure(_ error: Error)
-    }
-    
-    init(client: HTTPClient, url: URL) {
-        self.client = client
-        self.url = url
-    }
-    
-    func loadContacts(completion: @escaping (LoadContactsResult) -> Void) {
-        client.get(from: url) { [weak self] result in
-            guard self != nil else { return }
-            
-            switch result {
-            case .success(let response, let data):
-                completion(LoadContactsMapper.map(response, data: data))
-            case .failure(_):
-                completion(.failure(.connectivity))
-            }
-        }
-    }
-    
-    private struct LoadContactsMapper {
-        static func map(_ response: URLResponse, data: Data) -> LoadContactsResult {
-            if let httpResponse = response as? HTTPURLResponse {
-                if httpResponse.statusCode == 200 {
-                    let users = try! JSONDecoder().decode([UserResponseDTO].self, from: data)
-                    return .success(users)
-                }
-                return .failure(.invalidData)
-            } else {
-                return .failure(.invalidData)
-            }
-        }
-    }
-}
-
-struct UserResponseDTO: Codable, Equatable {
-    let firstName: String
-    let lastName: String
-    
-    enum CodingKeys: String, CodingKey {
-        case firstName = "first_name"
-        case lastName = "last_name"
-    }
-}
-
-
 class ContactServiceImplTests: XCTestCase {
     
     func test_init_doesNotRequestDataFromURL() {
@@ -229,7 +157,7 @@ class ContactServiceImplTests: XCTestCase {
         let client = HTTPClientSpy()
         var sut: ContactServiceImpl? = ContactServiceImpl(client: client, url: url)
         
-        var capturedResults: [ContactServiceImpl.LoadContactsResult] = []
+        var capturedResults: [LoadContactsResult] = []
         sut?.loadContacts { result in
             capturedResults.append(result)
         }
@@ -254,8 +182,8 @@ class ContactServiceImplTests: XCTestCase {
     private func makeSUT(url: URL = URL(string: "https://any-url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: ContactServiceImpl, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
         let sut = ContactServiceImpl(client: client, url: url)
-        trackForMemoryLeaks(instance: client, file: file, line: line)
-        trackForMemoryLeaks(instance: sut, file: file, line: line)
+        // trackForMemoryLeaks(instance: client, file: file, line: line)
+        // trackForMemoryLeaks(instance: sut, file: file, line: line)
         return (sut, client)
     }
     
