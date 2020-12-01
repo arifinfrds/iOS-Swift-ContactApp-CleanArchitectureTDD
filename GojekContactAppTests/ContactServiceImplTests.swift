@@ -44,9 +44,15 @@ class ContactServiceImpl {
     func loadContacts(completion: @escaping (LoadContactsResult) -> Void) {
         client.get(from: url) { result in
             switch result {
-            case .success(_, let data):
-                let users = try! JSONDecoder().decode([User].self, from: data)
-                completion(.success(users))
+            case .success(let response, let data):
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 200 {
+                        let users = try! JSONDecoder().decode([User].self, from: data)
+                        completion(.success(users))
+                        return
+                    }
+                    completion(.failure(.invalidData))
+                }
             case .failure(_):
                 completion(.failure(.connectivity))
             }
