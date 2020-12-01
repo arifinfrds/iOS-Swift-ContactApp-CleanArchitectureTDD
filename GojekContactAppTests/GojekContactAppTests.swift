@@ -90,16 +90,17 @@ class GojekContactAppTests: XCTestCase {
         let url = URL(string: "https://any-url.com")!
         let (sut, client) = makeSUT(url: url)
         
-        var capturedErrors: [ContactServiceImpl.Error] = []
-        sut.loadContacts { error in
-            if let error = error {
-                capturedErrors.append(error)
+        let codes = [199, 201, 300, 400, 500]
+        for (index, code) in codes.enumerated() {
+            var capturedErrors: [ContactServiceImpl.Error] = []
+            sut.loadContacts { error in
+                if let error = error {
+                    capturedErrors.append(error)
+                }
             }
+            client.complete(withStatusCode: code, at: index)
+            XCTAssertEqual(capturedErrors, [.invalidData])
         }
-        let statusCode = 400
-        client.complete(withStatusCode: statusCode)
-        
-        XCTAssertEqual(capturedErrors, [.invalidData])
     }
     
     
