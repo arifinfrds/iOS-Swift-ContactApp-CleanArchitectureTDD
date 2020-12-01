@@ -235,9 +235,15 @@ class ContactServiceImplTests: XCTestCase {
     
     // MARK: - Helpers
     
-    private func makeSUT(url: URL) -> (sut: ContactServiceImpl, client: HTTPClientSpy) {
+    private func makeSUT(url: URL, file: StaticString = #filePath, line: UInt = #line) -> (sut: ContactServiceImpl, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
         let sut = ContactServiceImpl(client: client, url: url)
+        addTeardownBlock {
+            XCTAssertNil(client, "Instance should have been deallocated. Potential memory leaks.", file: file, line: line)
+        }
+        addTeardownBlock {
+            XCTAssertNil(sut, "Instance should have been deallocated. Potential memory leaks.", file: file, line: line)
+        }
         return (sut, client)
     }
     
