@@ -37,17 +37,19 @@ class LoadContactsInteractorImpl: LoadContactsInteractor {
         service.loadContacts { result in
             switch result {
             case .success(let userResponseDTOs):
-                var users: [User] = []
-                for userResponseDTO in userResponseDTOs {
-                    let user = User(firstName: userResponseDTO.firstName, lastName: userResponseDTO.lastName)
-                    users.append(user)
-                }
-                completion(.success(users))
+                completion(.success(UsersMapper.map(userResponseDTOs)))
             case .failure(_):
                 completion(.failure(.someError))
             }
         }
     }
+    
+    private struct UsersMapper {
+        static func map(_ userResponseDTOs: [UserResponseDTO]) -> [User] {
+            return userResponseDTOs.map { User(firstName: $0.firstName, lastName: $0.lastName) }
+        }
+    }
+    
 }
 
 class LoadContactsInteractorTests: XCTestCase {
