@@ -68,35 +68,45 @@ struct User: Codable, Equatable {
 class GojekContactAppTests: XCTestCase {
     
     func test_init_doesNotRequestDataFromURL() {
+        // given
         let url = URL(string: "https://any-url.com")!
         let (_, client) = makeSUT(url: url)
         
+        // then
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
     func test_loadContacts_shouldRequestWithGivenURL() {
+        // given
         let url = URL(string: "https://any-url.com")!
         let (sut, client) = makeSUT(url: url)
         
+        // when
         sut.loadContacts { _ in }
         
+        // then
         XCTAssertEqual(client.requestedURLs, [url])
     }
     
     func test_loadContactsTwice_shouldRequestWithGivenURLTwice() {
+        // given
         let url = URL(string: "https://any-url.com")!
         let (sut, client) = makeSUT(url: url)
         
+        // when
         sut.loadContacts { _ in }
         sut.loadContacts { _ in }
         
+        // then
         XCTAssertEqual(client.requestedURLs, [url, url])
     }
     
     func test_loadContacts_deliversErrorOnClientError() {
+        // given
         let url = URL(string: "https://any-url.com")!
         let (sut, client) = makeSUT(url: url)
         
+        // when
         var capturedErrors: [ContactServiceImpl.Error] = []
         sut.loadContacts { result in
             switch result {
@@ -109,13 +119,16 @@ class GojekContactAppTests: XCTestCase {
         let clientError = NSError(domain: NSURLErrorDomain, code: -1, userInfo: nil)
         client.complete(with: clientError)
         
+        // then
         XCTAssertEqual(capturedErrors, [.connectivity])
     }
     
     func test_loadContacts_deliversErrorOnNon200HTTTPResponse() {
+        // given
         let url = URL(string: "https://any-url.com")!
         let (sut, client) = makeSUT(url: url)
         
+        // when
         let codes = [199, 201, 300, 400, 500]
         for (index, code) in codes.enumerated() {
             var capturedErrors: [ContactServiceImpl.Error] = []
@@ -127,15 +140,19 @@ class GojekContactAppTests: XCTestCase {
                     capturedErrors.append(error)
                 }
                 client.complete(withStatusCode: code, at: index)
+                
+                // then
                 XCTAssertEqual(capturedErrors, [.invalidData])
             }
         }
     }
     
     func test_loadContacts_deliversErrorOn200ResponseWithInvalidJSON() {
+        // given
         let url = URL(string: "https://any-url.com")!
         let (sut, client) = makeSUT(url: url)
         
+        // when
         var capturedErrors: [ContactServiceImpl.Error] = []
         sut.loadContacts { result in
             switch result {
@@ -146,14 +163,18 @@ class GojekContactAppTests: XCTestCase {
             }
             let invalidJSONData = "invalid-JSON-data".data(using: .utf8)!
             client.complete(withStatusCode: 200, data: invalidJSONData)
+            
+            // then
             XCTAssertEqual(capturedErrors, [.invalidData])
         }
     }
     
     func test_loadContacts_deliversNoItemsOn200HTTPResponseWithEmptyJSONList() {
+        // given
         let url = URL(string: "https://any-url.com")!
         let (sut, client) = makeSUT(url: url)
         
+        // when
         var capturedUsers: [User] = []
         sut.loadContacts { result in
             switch result {
@@ -163,16 +184,19 @@ class GojekContactAppTests: XCTestCase {
                 XCTFail("Expected success, but got error instead, erro: \(error)")
             }
         }
-        
         let emptyUsersJSONData = makeJSONData(forResourceJsonName: "users-empty")
         client.complete(withStatusCode: 200, data: emptyUsersJSONData)
+        
+        // then
         XCTAssertTrue(capturedUsers.isEmpty)
     }
     
     func test_loadContacts_deliversItemsOn200HTTPResponseWithJSONList() {
+        // given
         let url = URL(string: "https://any-url.com")!
         let (sut, client) = makeSUT(url: url)
         
+        // when
         var capturedUsers: [User] = []
         sut.loadContacts { result in
             switch result {
@@ -182,8 +206,9 @@ class GojekContactAppTests: XCTestCase {
                 XCTFail("Expected success, but got error instead, erro: \(error)")
             }
         }
-        
         let usersJSONData = makeJSONData(forResourceJsonName: "users")
+        
+        // then
         client.complete(withStatusCode: 200, data: usersJSONData)
         
         let expectedUsers = try! JSONDecoder().decode([User].self, from: usersJSONData)
