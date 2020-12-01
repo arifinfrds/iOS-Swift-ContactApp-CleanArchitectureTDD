@@ -42,7 +42,9 @@ class ContactServiceImpl {
     }
     
     func loadContacts(completion: @escaping (LoadContactsResult) -> Void) {
-        client.get(from: url) { result in
+        client.get(from: url) { [weak self] result in
+            guard self != nil else { return }
+            
             switch result {
             case .success(let response, let data):
                 completion(LoadContactsMapper.map(response, data: data))
@@ -221,6 +223,24 @@ class ContactServiceImplTests: XCTestCase {
         let expectedUsers = try! JSONDecoder().decode([UserResponseDTO].self, from: usersJSONData)
         XCTAssertEqual(capturedUsers, expectedUsers)
     }
+    
+    func test_loadContacts_doesNotResultAfterSUTInstanceHasBeenDeallocated() {
+        let url = URL(string: "https://any-url.com")!
+        let client = HTTPClientSpy()
+        var sut: ContactServiceImpl? = ContactServiceImpl(client: client, url: url)
+        
+        var capturedResults: [ContactServiceImpl.LoadContactsResult] = []
+        sut?.loadContacts { result in
+            capturedResults.append(result)
+        }
+        sut = nil
+        
+        let usersJSONData = makeJSONData(forResourceJsonName: "users")
+        client.complete(withStatusCode: 200, data: usersJSONData)
+        
+        XCTAssertTrue(capturedResults.isEmpty)
+    }
+    
     
     private func makeJSONData(forResourceJsonName name: String) -> Data {
         let jsonURL = Bundle(for: ContactServiceImplTests.self).url(forResource: name, withExtension: "json")!
