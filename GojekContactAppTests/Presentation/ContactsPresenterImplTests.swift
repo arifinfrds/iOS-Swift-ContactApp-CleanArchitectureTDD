@@ -12,8 +12,21 @@ import XCTest
 class ContactsPresenterImpl {
     private let interactor: LoadContactsInteractor
     
+    var users: [User] = []
+    
     init(interactor: LoadContactsInteractor) {
         self.interactor = interactor
+    }
+    
+    func onLoad() {
+        interactor.execute { result in
+            switch result {
+            case .success(let users):
+                self.users = users
+            case .failure(_):
+                break
+            }
+        }
     }
 }
 
@@ -23,6 +36,17 @@ class ContactsPresenterImplTests: XCTestCase {
         let (_ , client) = makeSUT()
         
         XCTAssertTrue(client.requestedURLs.isEmpty)
+    }
+    
+    func test_onLoad_deliversUsersWithValidUsers() {
+        let (sut, client) = makeSUT()
+        
+        sut.onLoad()
+        
+        let usersJSONData = makeJSONData(forResourceJsonName: "users")
+        client.complete(withStatusCode: 200, data: usersJSONData)
+        
+        XCTAssertTrue(!sut.users.isEmpty)
     }
     
     
