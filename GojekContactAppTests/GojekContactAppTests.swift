@@ -54,7 +54,7 @@ class ContactServiceImpl {
     }
 }
 
-struct User: Codable {
+struct User: Codable, Equatable {
     let firstName: String
     let lastName: String
     
@@ -185,7 +185,9 @@ class GojekContactAppTests: XCTestCase {
         
         let usersJSONData = makeJSONData(forResourceJsonName: "users")
         client.complete(withStatusCode: 200, data: usersJSONData)
-        XCTAssertTrue(!capturedUsers.isEmpty)
+        
+        let expectedUsers = try! JSONDecoder().decode([User].self, from: usersJSONData)
+        XCTAssertEqual(capturedUsers, expectedUsers)
     }
     
     private func makeJSONData(forResourceJsonName name: String) -> Data {
