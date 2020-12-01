@@ -9,11 +9,11 @@ import XCTest
 @testable import GojekContactApp
 
 protocol HTTPClient {
-    func get(from url: URL, completion: @escaping (Error?) -> Void)
+    func get(from url: URL, completion: @escaping (URLResponse?, Error?) -> Void)
 }
 
 protocol ContactService {
-    func loadContacts(completion: @escaping (Error?) -> Void)
+    func loadContacts(completion: @escaping (URLResponse?, Error?) -> Void)
 }
 
 class ContactServiceImpl {
@@ -22,6 +22,7 @@ class ContactServiceImpl {
     
     enum Error: Swift.Error, Equatable {
         case connectivity
+        case invalidData
     }
     
     init(client: HTTPClient, url: URL) {
@@ -30,8 +31,12 @@ class ContactServiceImpl {
     }
     
     func loadContacts(completion: @escaping (Error?) -> Void) {
-        client.get(from: url) { error in
-            completion(.connectivity)
+        client.get(from: url) { (response, error) in
+            if let _ = response {
+                completion(.invalidData)
+            } else {
+                completion(.connectivity)
+            }
         }
     }
 }
@@ -81,6 +86,22 @@ class GojekContactAppTests: XCTestCase {
         XCTAssertEqual(capturedErrors, [.connectivity])
     }
     
+    func test_loadContacts_deliversErrorOnNon200HTTTPResponse() {
+        let url = URL(string: "https://any-url.com")!
+        let (sut, client) = makeSUT(url: url)
+        
+        var capturedErrors: [ContactServiceImpl.Error] = []
+        sut.loadContacts { error in
+            if let error = error {
+                capturedErrors.append(error)
+            }
+        }
+        let statusCode = 400
+        client.complete(withStatusCode: statusCode)
+        
+        XCTAssertEqual(capturedErrors, [.invalidData])
+    }
+    
     
     // MARK: - Helpers
     
@@ -91,18 +112,27 @@ class GojekContactAppTests: XCTestCase {
     }
     
     private class HTTPClientSpy: HTTPClient {
-        var messages: [(url: URL, completion: (Error?) -> Void)] = []
+        var messages: [(url: URL, completion: (URLResponse?, Error?) -> Void)] = []
         var requestedURLs: [URL] {
             return messages.map { $0.url }
         }
         
-        func get(from url: URL, completion: @escaping (Error?) -> Void) {
+        func get(from url: URL, completion: @escaping (URLResponse?, Error?) -> Void) {
             messages.append((url, completion))
         }
         
         func complete(with error: Error, at index: Int = 0) {
-            messages[index].completion(error)
-            
+            messages[index].completion(nil, error)
+        }
+        
+        func complete(withStatusCode code: Int, at index: Int = 0) {
+            let response = HTTPURLResponse(
+                url: requestedURLs[index],
+                statusCode: code,
+                httpVersion: nil,
+                headerFields: nil
+            )
+            messages[index].completion(response, nil)
         }
     }
     
