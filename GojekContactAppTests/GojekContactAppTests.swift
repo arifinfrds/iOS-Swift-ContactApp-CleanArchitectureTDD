@@ -45,8 +45,8 @@ class ContactServiceImpl {
         client.get(from: url) { result in
             switch result {
             case .success(_, let data):
-                // let users = try! JSONDecoder().decode([User].self, from: data)
-                completion(.success([]))
+                let users = try! JSONDecoder().decode([User].self, from: data)
+                completion(.success(users))
             case .failure(_):
                 completion(.failure(.connectivity))
             }
@@ -57,6 +57,11 @@ class ContactServiceImpl {
 struct User: Codable {
     let firstName: String
     let lastName: String
+    
+    enum CodingKeys: String, CodingKey {
+        case firstName = "first_name"
+        case lastName = "last_name"
+    }
 }
 
 
@@ -159,9 +164,28 @@ class GojekContactAppTests: XCTestCase {
             }
         }
         
-        let emptyUsersJSON = makeJSONData(forResourceJsonName: "users-empty")
-        client.complete(withStatusCode: 200, data: emptyUsersJSON)
+        let emptyUsersJSONData = makeJSONData(forResourceJsonName: "users-empty")
+        client.complete(withStatusCode: 200, data: emptyUsersJSONData)
         XCTAssertTrue(capturedUsers.isEmpty)
+    }
+    
+    func test_loadContacts_deliversItemsOn200HTTPResponseWithJSONList() {
+        let url = URL(string: "https://any-url.com")!
+        let (sut, client) = makeSUT(url: url)
+        
+        var capturedUsers: [User] = []
+        sut.loadContacts { result in
+            switch result {
+            case .success(let users):
+                capturedUsers = users
+            case .failure(let error):
+                XCTFail("Expected success, but got error instead, erro: \(error)")
+            }
+        }
+        
+        let usersJSONData = makeJSONData(forResourceJsonName: "users")
+        client.complete(withStatusCode: 200, data: usersJSONData)
+        XCTAssertTrue(!capturedUsers.isEmpty)
     }
     
     private func makeJSONData(forResourceJsonName name: String) -> Data {

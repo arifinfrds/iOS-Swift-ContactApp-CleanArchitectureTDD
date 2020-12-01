@@ -16,6 +16,7 @@
 		924C456825753A21003E1B93 /* GojekContactAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924C456725753A21003E1B93 /* GojekContactAppTests.swift */; };
 		924C457325753A21003E1B93 /* GojekContactAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924C457225753A21003E1B93 /* GojekContactAppUITests.swift */; };
 		92AB3AB82575F5AD006E5E87 /* users-empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 92AB3AB72575F5AD006E5E87 /* users-empty.json */; };
+		92AB3AC02575F84B006E5E87 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 92AB3ABF2575F84B006E5E87 /* users.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		924C457225753A21003E1B93 /* GojekContactAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GojekContactAppUITests.swift; sourceTree = "<group>"; };
 		924C457425753A21003E1B93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92AB3AB72575F5AD006E5E87 /* users-empty.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "users-empty.json"; sourceTree = "<group>"; };
+		92AB3ABF2575F84B006E5E87 /* users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				924C456725753A21003E1B93 /* GojekContactAppTests.swift */,
 				924C456925753A21003E1B93 /* Info.plist */,
 				92AB3AB72575F5AD006E5E87 /* users-empty.json */,
+				92AB3ABF2575F84B006E5E87 /* users.json */,
 			);
 			path = GojekContactAppTests;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92AB3AC02575F84B006E5E87 /* users.json in Resources */,
 				92AB3AB82575F5AD006E5E87 /* users-empty.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
