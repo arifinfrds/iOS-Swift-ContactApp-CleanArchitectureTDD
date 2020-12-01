@@ -18,9 +18,9 @@ protocol HTTPClient {
     func get(from url: URL, completion: @escaping (HTTPClientResult) -> Void)
 }
 
-protocol ContactService {
-    func loadContacts(completion: @escaping (URLResponse?, Error?) -> Void)
-}
+//protocol ContactService {
+//    func loadContacts(completion: @escaping (URLResponse?, Error?) -> Void)
+//}
 
 class ContactServiceImpl {
     private let client: HTTPClient
@@ -32,7 +32,7 @@ class ContactServiceImpl {
     }
     
     enum LoadContactsResult {
-        case success(_ items: [User])
+        case success(_ items: [UserResponseDTO])
         case failure(_ error: Error)
     }
     
@@ -45,27 +45,29 @@ class ContactServiceImpl {
         client.get(from: url) { result in
             switch result {
             case .success(let response, let data):
-                completion(self.map(response, data: data))
+                completion(LoadContactsMapper.map(response, data: data))
             case .failure(_):
                 completion(.failure(.connectivity))
             }
         }
     }
     
-    func map(_ response: URLResponse, data: Data) -> LoadContactsResult {
-        if let httpResponse = response as? HTTPURLResponse {
-            if httpResponse.statusCode == 200 {
-                let users = try! JSONDecoder().decode([User].self, from: data)
-                return .success(users)
+    private struct LoadContactsMapper {
+        static func map(_ response: URLResponse, data: Data) -> LoadContactsResult {
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    let users = try! JSONDecoder().decode([UserResponseDTO].self, from: data)
+                    return .success(users)
+                }
+                return .failure(.invalidData)
+            } else {
+                return .failure(.invalidData)
             }
-            return .failure(.invalidData)
-        } else {
-            return .failure(.invalidData)
         }
     }
 }
 
-struct User: Codable, Equatable {
+struct UserResponseDTO: Codable, Equatable {
     let firstName: String
     let lastName: String
     
@@ -80,8 +82,7 @@ class ContactServiceImplTests: XCTestCase {
     
     func test_init_doesNotRequestDataFromURL() {
         // given
-        let url = URL(string: "https://any-url.com")!
-        let (_, client) = makeSUT(url: url)
+        let (_, client) = makeSUT()
         
         // then
         XCTAssertTrue(client.requestedURLs.isEmpty)
@@ -114,8 +115,7 @@ class ContactServiceImplTests: XCTestCase {
     
     func test_loadContacts_deliversErrorOnClientError() {
         // given
-        let url = URL(string: "https://any-url.com")!
-        let (sut, client) = makeSUT(url: url)
+        let (sut, client) = makeSUT()
         
         // when
         var capturedErrors: [ContactServiceImpl.Error] = []
@@ -136,8 +136,7 @@ class ContactServiceImplTests: XCTestCase {
     
     func test_loadContacts_deliversErrorOnNon200HTTTPResponse() {
         // given
-        let url = URL(string: "https://any-url.com")!
-        let (sut, client) = makeSUT(url: url)
+        let (sut, client) = makeSUT()
         
         // when
         let codes = [199, 201, 300, 400, 500]
@@ -160,8 +159,7 @@ class ContactServiceImplTests: XCTestCase {
     
     func test_loadContacts_deliversErrorOn200ResponseWithInvalidJSON() {
         // given
-        let url = URL(string: "https://any-url.com")!
-        let (sut, client) = makeSUT(url: url)
+        let (sut, client) = makeSUT()
         
         // when
         var capturedErrors: [ContactServiceImpl.Error] = []
@@ -182,11 +180,10 @@ class ContactServiceImplTests: XCTestCase {
     
     func test_loadContacts_deliversNoItemsOn200HTTPResponseWithEmptyJSONList() {
         // given
-        let url = URL(string: "https://any-url.com")!
-        let (sut, client) = makeSUT(url: url)
+        let (sut, client) = makeSUT()
         
         // when
-        var capturedUsers: [User] = []
+        var capturedUsers: [UserResponseDTO] = []
         sut.loadContacts { result in
             switch result {
             case .success(let users):
@@ -204,11 +201,10 @@ class ContactServiceImplTests: XCTestCase {
     
     func test_loadContacts_deliversItemsOn200HTTPResponseWithJSONList() {
         // given
-        let url = URL(string: "https://any-url.com")!
-        let (sut, client) = makeSUT(url: url)
+        let (sut, client) = makeSUT()
         
         // when
-        var capturedUsers: [User] = []
+        var capturedUsers: [UserResponseDTO] = []
         sut.loadContacts { result in
             switch result {
             case .success(let users):
@@ -222,7 +218,7 @@ class ContactServiceImplTests: XCTestCase {
         // then
         client.complete(withStatusCode: 200, data: usersJSONData)
         
-        let expectedUsers = try! JSONDecoder().decode([User].self, from: usersJSONData)
+        let expectedUsers = try! JSONDecoder().decode([UserResponseDTO].self, from: usersJSONData)
         XCTAssertEqual(capturedUsers, expectedUsers)
     }
     
@@ -235,22 +231,24 @@ class ContactServiceImplTests: XCTestCase {
     
     // MARK: - Helpers
     
-    private func makeSUT(url: URL, file: StaticString = #filePath, line: UInt = #line) -> (sut: ContactServiceImpl, client: HTTPClientSpy) {
+    private func makeSUT(url: URL = URL(string: "https://any-url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: ContactServiceImpl, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
         let sut = ContactServiceImpl(client: client, url: url)
-        addTeardownBlock {
-            XCTAssertNil(client, "Instance should have been deallocated. Potential memory leaks.", file: file, line: line)
-        }
-        addTeardownBlock {
-            XCTAssertNil(sut, "Instance should have been deallocated. Potential memory leaks.", file: file, line: line)
-        }
+        trackForMemoryLeaks(instance: client, file: file, line: line)
+        trackForMemoryLeaks(instance: sut, file: file, line: line)
         return (sut, client)
+    }
+    
+    private func trackForMemoryLeaks(instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "Instance should have been deallocated. Potential memory leaks.", file: file, line: line)
+        }
     }
     
     private class HTTPClientSpy: HTTPClient {
         var messages: [(url: URL, completion: (HTTPClientResult) -> Void)] = []
         var requestedURLs: [URL] {
-            return messages.map { $0.url }
+            return messages.map {  $0.url }
         }
         
         func get(from url: URL, completion: @escaping (HTTPClientResult) -> Void) {
