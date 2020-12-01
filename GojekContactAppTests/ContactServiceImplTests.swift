@@ -1,5 +1,5 @@
 //
-//  GojekContactAppTests.swift
+//  ContactServiceImplTests.swift
 //  GojekContactAppTests
 //
 //  Created by Arifin Firdaus on 30/11/20.
@@ -65,7 +65,7 @@ struct User: Codable, Equatable {
 }
 
 
-class GojekContactAppTests: XCTestCase {
+class ContactServiceImplTests: XCTestCase {
     
     func test_init_doesNotRequestDataFromURL() {
         // given
@@ -216,7 +216,7 @@ class GojekContactAppTests: XCTestCase {
     }
     
     private func makeJSONData(forResourceJsonName name: String) -> Data {
-        let jsonURL = Bundle(for: GojekContactAppTests.self).url(forResource: name, withExtension: "json")!
+        let jsonURL = Bundle(for: ContactServiceImplTests.self).url(forResource: name, withExtension: "json")!
         let data = try! Data(contentsOf: jsonURL)
         return data
     }
