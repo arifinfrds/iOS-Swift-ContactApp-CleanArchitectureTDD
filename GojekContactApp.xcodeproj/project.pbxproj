@@ -20,6 +20,7 @@
 		929E348D2576BC95000C73D1 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929E348C2576BC95000C73D1 /* HTTPClient.swift */; };
 		929E34992576C33D000C73D1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929E34982576C33D000C73D1 /* User.swift */; };
 		929E34A62576C37D000C73D1 /* LoadContactsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929E34A52576C37D000C73D1 /* LoadContactsInteractor.swift */; };
+		929E34BD2576C420000C73D1 /* ContactsPresenterImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929E34BC2576C420000C73D1 /* ContactsPresenterImplTests.swift */; };
 		92AB3AB82575F5AD006E5E87 /* users-empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 92AB3AB72575F5AD006E5E87 /* users-empty.json */; };
 		92AB3AC02575F84B006E5E87 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 92AB3ABF2575F84B006E5E87 /* users.json */; };
 /* End PBXBuildFile section */
@@ -61,6 +62,7 @@
 		929E348C2576BC95000C73D1 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		929E34982576C33D000C73D1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		929E34A52576C37D000C73D1 /* LoadContactsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadContactsInteractor.swift; sourceTree = "<group>"; };
+		929E34BC2576C420000C73D1 /* ContactsPresenterImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsPresenterImplTests.swift; sourceTree = "<group>"; };
 		92AB3AB72575F5AD006E5E87 /* users-empty.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "users-empty.json"; sourceTree = "<group>"; };
 		92AB3ABF2575F84B006E5E87 /* users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,6 +117,7 @@
 			children = (
 				929E34972576C332000C73D1 /* Domain */,
 				929E34812576BC38000C73D1 /* Data */,
+				929E34AD2576C3D9000C73D1 /* Presentation */,
 				924C455025753A20003E1B93 /* AppDelegate.swift */,
 				924C455225753A20003E1B93 /* SceneDelegate.swift */,
 				924C455425753A20003E1B93 /* ViewController.swift */,
@@ -129,8 +132,9 @@
 		924C456625753A21003E1B93 /* GojekContactAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				924C456725753A21003E1B93 /* ContactServiceImplTests.swift */,
-				929E34712576BB31000C73D1 /* LoadContactsInteractorTests.swift */,
+				929E34B52576C3F3000C73D1 /* Domain */,
+				929E34AE2576C3EB000C73D1 /* Data */,
+				929E34C42576C428000C73D1 /* Presentation */,
 				924C456925753A21003E1B93 /* Info.plist */,
 				92AB3AB72575F5AD006E5E87 /* users-empty.json */,
 				92AB3ABF2575F84B006E5E87 /* users.json */,
@@ -195,6 +199,37 @@
 				929E34A52576C37D000C73D1 /* LoadContactsInteractor.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		929E34AD2576C3D9000C73D1 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		929E34AE2576C3EB000C73D1 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				924C456725753A21003E1B93 /* ContactServiceImplTests.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		929E34B52576C3F3000C73D1 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				929E34712576BB31000C73D1 /* LoadContactsInteractorTests.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		929E34C42576C428000C73D1 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				929E34BC2576C420000C73D1 /* ContactsPresenterImplTests.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,6 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				924C456825753A21003E1B93 /* ContactServiceImplTests.swift in Sources */,
+				929E34BD2576C420000C73D1 /* ContactsPresenterImplTests.swift in Sources */,
 				929E34722576BB31000C73D1 /* LoadContactsInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
