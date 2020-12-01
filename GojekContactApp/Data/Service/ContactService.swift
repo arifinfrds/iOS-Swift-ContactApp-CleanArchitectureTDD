@@ -28,7 +28,7 @@ protocol ContactService {
     func loadContacts(completion: @escaping (LoadContactsResult) -> Void)
 }
 
-class ContactServiceImpl {
+class ContactServiceImpl: ContactService {
     private let client: HTTPClient
     private let url: URL
     

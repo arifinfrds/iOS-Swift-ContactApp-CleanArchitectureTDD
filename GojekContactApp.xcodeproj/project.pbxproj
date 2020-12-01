@@ -125,10 +125,10 @@
 			isa = PBXGroup;
 			children = (
 				924C456725753A21003E1B93 /* ContactServiceImplTests.swift */,
+				929E34712576BB31000C73D1 /* LoadContactsInteractorTests.swift */,
 				924C456925753A21003E1B93 /* Info.plist */,
 				92AB3AB72575F5AD006E5E87 /* users-empty.json */,
 				92AB3ABF2575F84B006E5E87 /* users.json */,
-				929E34712576BB31000C73D1 /* LoadContactsInteractorTests.swift */,
 			);
 			path = GojekContactAppTests;
 			sourceTree = "<group>";
