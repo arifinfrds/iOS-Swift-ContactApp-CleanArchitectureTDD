@@ -37,12 +37,15 @@ class LoadContactsInteractorImpl: LoadContactsInteractor {
 class LoadContactsInteractorTests: XCTestCase {
 
     func test_init_doesNotExecuteInteractor() {
-        let url = URL(string: "https://any-url.com")!
-        let client = HTTPClientSpy()
-        let service: ContactService = ContactServiceImpl(client: client, url: url)
-        let _ = LoadContactsInteractorImpl(service: service)
+        let (_, client) = makeSUT()
         
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
  
+    private func makeSUT(url: URL = URL(string: "https://any-url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: LoadContactsInteractorImpl, client: HTTPClientSpy) {
+        let client = HTTPClientSpy()
+        let service = ContactServiceImpl(client: client, url: url)
+        let sut = LoadContactsInteractorImpl(service: service)
+        return (sut, client)
+    }
 }
