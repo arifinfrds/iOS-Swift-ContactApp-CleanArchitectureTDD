@@ -7,24 +7,6 @@
 
 import UIKit
 
-class HTTPClientMock: HTTPClient {
-    func get(from url: URL, completion: @escaping (HTTPClientResult) -> Void) {
-        let response = HTTPURLResponse(
-            url: url,
-            statusCode: 200,
-            httpVersion: nil,
-            headerFields: nil
-        )!
-        let users = [
-            UserResponseDTO(firstName: "Arifin", lastName: "Firdaus"),
-            UserResponseDTO(firstName: "SomePersonName", lastName: "SomeLastName")
-        ]
-        let data = try! JSONEncoder().encode(users)
-        completion(.success(response, data))
-    }
-
-}
-
 class ContactsViewController: UIViewController, ContactsView {
     @IBOutlet weak var tableView: UITableView!
     
@@ -44,7 +26,7 @@ class ContactsViewController: UIViewController, ContactsView {
     override func viewDidLoad() {
         super.viewDidLoad()
         let url = URL(string: "https://any-url.com")!
-        let client = HTTPClientMock()
+        let client = MockHTTPClient()
         let service = ContactServiceImpl(client: client, url: url)
         let interactor = LoadContactsInteractorImpl(service: service)
         let view = self
