@@ -169,7 +169,6 @@ class ContactServiceImplTests: XCTestCase {
         XCTAssertTrue(capturedResults.isEmpty)
     }
     
-    
     private func makeJSONData(forResourceJsonName name: String) -> Data {
         let jsonURL = Bundle(for: ContactServiceImplTests.self).url(forResource: name, withExtension: "json")!
         let data = try! Data(contentsOf: jsonURL)
