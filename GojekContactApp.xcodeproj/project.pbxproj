@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		924C455125753A20003E1B93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924C455025753A20003E1B93 /* AppDelegate.swift */; };
 		924C455325753A20003E1B93 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924C455225753A20003E1B93 /* SceneDelegate.swift */; };
-		924C455525753A20003E1B93 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924C455425753A20003E1B93 /* ViewController.swift */; };
 		924C455825753A20003E1B93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 924C455625753A20003E1B93 /* Main.storyboard */; };
 		924C455A25753A21003E1B93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 924C455925753A21003E1B93 /* Assets.xcassets */; };
 		924C455D25753A21003E1B93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 924C455B25753A21003E1B93 /* LaunchScreen.storyboard */; };
@@ -50,7 +49,6 @@
 		924C454D25753A20003E1B93 /* GojekContactApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GojekContactApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		924C455025753A20003E1B93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		924C455225753A20003E1B93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		924C455425753A20003E1B93 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		924C455725753A20003E1B93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		924C455925753A21003E1B93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		924C455C25753A21003E1B93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -126,12 +124,7 @@
 				929E34972576C332000C73D1 /* Domain */,
 				929E34812576BC38000C73D1 /* Data */,
 				929E34AD2576C3D9000C73D1 /* Presentation */,
-				924C455025753A20003E1B93 /* AppDelegate.swift */,
-				924C455225753A20003E1B93 /* SceneDelegate.swift */,
-				924C455425753A20003E1B93 /* ViewController.swift */,
-				924C455625753A20003E1B93 /* Main.storyboard */,
-				924C455925753A21003E1B93 /* Assets.xcassets */,
-				924C455B25753A21003E1B93 /* LaunchScreen.storyboard */,
+				9277A19C257783AE0006CA17 /* Application */,
 				924C455E25753A21003E1B93 /* Info.plist */,
 			);
 			path = GojekContactApp;
@@ -175,6 +168,15 @@
 				9277A181257768780006CA17 /* ContactsViewController.swift */,
 			);
 			path = Contacts;
+			sourceTree = "<group>";
+		};
+		9277A19C257783AE0006CA17 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				924C455025753A20003E1B93 /* AppDelegate.swift */,
+				924C455225753A20003E1B93 /* SceneDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 		929E34812576BC38000C73D1 /* Data */ = {
@@ -231,6 +233,9 @@
 		929E34AD2576C3D9000C73D1 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				924C455625753A20003E1B93 /* Main.storyboard */,
+				924C455925753A21003E1B93 /* Assets.xcassets */,
+				924C455B25753A21003E1B93 /* LaunchScreen.storyboard */,
 				9277A175257767940006CA17 /* Scenes */,
 			);
 			path = Presentation;
@@ -397,7 +402,6 @@
 				9277A17D257767FF0006CA17 /* ContactsRouter.swift in Sources */,
 				929E348D2576BC95000C73D1 /* HTTPClient.swift in Sources */,
 				929E34992576C33D000C73D1 /* User.swift in Sources */,
-				924C455525753A20003E1B93 /* ViewController.swift in Sources */,
 				924C455125753A20003E1B93 /* AppDelegate.swift in Sources */,
 				929E34A62576C37D000C73D1 /* LoadContactsInteractor.swift in Sources */,
 				924C455325753A20003E1B93 /* SceneDelegate.swift in Sources */,
