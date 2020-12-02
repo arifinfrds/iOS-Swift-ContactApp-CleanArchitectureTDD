@@ -16,15 +16,16 @@ class ContactsViewController: UIViewController, ContactsView {
         didSet { tableView.reloadData() }
     }
     
-    final class func create(with presenter: ContactsPresenter) -> ContactsViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let viewController = storyboard.instantiateViewController(identifier: "ContactsViewController") as! ContactsViewController
-        viewController.presenter  = presenter
-        return viewController
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        instantiatePresenter()
+        presenter.onLoad()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+    
+    private func instantiatePresenter() {
         let url = URL(string: "https://any-url.com")!
         let client = MockHTTPClient()
         let service = ContactServiceImpl(client: client, url: url)
@@ -33,11 +34,6 @@ class ContactsViewController: UIViewController, ContactsView {
         let router = ContactsRouterImpl()
         let presenter: ContactsPresenter = ContactsPresenterImpl(interactor: interactor, view: view, router: router)
         self.presenter = presenter
-        
-        presenter.onLoad()
-        
-        tableView.dataSource = self
-        tableView.delegate = self
     }
     
     
