@@ -15,6 +15,8 @@
 		924C455D25753A21003E1B93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 924C455B25753A21003E1B93 /* LaunchScreen.storyboard */; };
 		924C456825753A21003E1B93 /* ContactServiceImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924C456725753A21003E1B93 /* ContactServiceImplTests.swift */; };
 		924C457325753A21003E1B93 /* GojekContactAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924C457225753A21003E1B93 /* GojekContactAppUITests.swift */; };
+		9277A178257767BD0006CA17 /* ContactsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277A177257767BD0006CA17 /* ContactsPresenter.swift */; };
+		9277A17D257767FF0006CA17 /* ContactsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277A17C257767FF0006CA17 /* ContactsRouter.swift */; };
 		929E34722576BB31000C73D1 /* LoadContactsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929E34712576BB31000C73D1 /* LoadContactsInteractorTests.swift */; };
 		929E34842576BC62000C73D1 /* ContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929E34832576BC62000C73D1 /* ContactService.swift */; };
 		929E348D2576BC95000C73D1 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929E348C2576BC95000C73D1 /* HTTPClient.swift */; };
@@ -57,6 +59,8 @@
 		924C456E25753A21003E1B93 /* GojekContactAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GojekContactAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		924C457225753A21003E1B93 /* GojekContactAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GojekContactAppUITests.swift; sourceTree = "<group>"; };
 		924C457425753A21003E1B93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9277A177257767BD0006CA17 /* ContactsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsPresenter.swift; sourceTree = "<group>"; };
+		9277A17C257767FF0006CA17 /* ContactsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsRouter.swift; sourceTree = "<group>"; };
 		929E34712576BB31000C73D1 /* LoadContactsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadContactsInteractorTests.swift; sourceTree = "<group>"; };
 		929E34832576BC62000C73D1 /* ContactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactService.swift; sourceTree = "<group>"; };
 		929E348C2576BC95000C73D1 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -151,6 +155,23 @@
 			path = GojekContactAppUITests;
 			sourceTree = "<group>";
 		};
+		9277A175257767940006CA17 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				9277A176257767AC0006CA17 /* Contacts */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		9277A176257767AC0006CA17 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				9277A177257767BD0006CA17 /* ContactsPresenter.swift */,
+				9277A17C257767FF0006CA17 /* ContactsRouter.swift */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
 		929E34812576BC38000C73D1 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +225,7 @@
 		929E34AD2576C3D9000C73D1 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				9277A175257767940006CA17 /* Scenes */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -365,6 +387,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				929E34842576BC62000C73D1 /* ContactService.swift in Sources */,
+				9277A178257767BD0006CA17 /* ContactsPresenter.swift in Sources */,
+				9277A17D257767FF0006CA17 /* ContactsRouter.swift in Sources */,
 				929E348D2576BC95000C73D1 /* HTTPClient.swift in Sources */,
 				929E34992576C33D000C73D1 /* User.swift in Sources */,
 				924C455525753A20003E1B93 /* ViewController.swift in Sources */,
