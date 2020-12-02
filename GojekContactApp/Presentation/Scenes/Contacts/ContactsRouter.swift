@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol ContactsRouter {
+    func showDetailContact(from view: ContactsView, user: User)
+}
