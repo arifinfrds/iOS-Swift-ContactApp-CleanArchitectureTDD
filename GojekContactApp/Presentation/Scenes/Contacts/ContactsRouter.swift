@@ -10,3 +10,12 @@ import Foundation
 protocol ContactsRouter {
     func showDetailContact(from view: ContactsView, user: User)
 }
+
+class ContactsRouterImpl: ContactsRouter {
+    
+    func showDetailContact(from view: ContactsView, user: User) {
+        
+    }
+
+    
+}

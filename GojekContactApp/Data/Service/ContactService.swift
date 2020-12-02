@@ -16,6 +16,10 @@ struct UserResponseDTO: Codable, Equatable {
         case firstName = "first_name"
         case lastName = "last_name"
     }
+    
+    func jsonData() throws -> Data {
+        return try JSONEncoder().encode(self)
+    }
 }
 
 enum LoadContactsResult {
