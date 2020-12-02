@@ -80,4 +80,9 @@ extension ContactsViewController: UITableViewDelegate {
         return UITableView.automaticDimension
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let user = users[indexPath.row]
+        presenter.onSelectUser(user: user)
+    }
+    
 }

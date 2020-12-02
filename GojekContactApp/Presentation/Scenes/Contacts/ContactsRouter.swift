@@ -14,7 +14,7 @@ protocol ContactsRouter {
 class ContactsRouterImpl: ContactsRouter {
     
     func showDetailContact(from view: ContactsView, user: User) {
-        
+        print(user)
     }
 
     
