@@ -8,6 +8,9 @@
 import XCTest
 @testable import GojekContactApp
 
+protocol ContactsRouter {
+    func showDetailContact(from view: ContactsView, user: User)
+}
 
 protocol ContactsView {
     func display(_ users: [User])
@@ -17,15 +20,18 @@ protocol ContactsView {
 
 protocol ContactsPresenter {
     func onLoad()
+    func onSelectUser(user: User)
 }
 
-class ContactsPresenterImpl {
+class ContactsPresenterImpl: ContactsPresenter {
     private let interactor: LoadContactsInteractor
     private let view: ContactsView
+    private let router: ContactsRouter
     
-    init(interactor: LoadContactsInteractor, view: ContactsView) {
+    init(interactor: LoadContactsInteractor, view: ContactsView, router: ContactsRouter) {
         self.interactor = interactor
         self.view = view
+        self.router = router
     }
     
     func onLoad() {
@@ -44,18 +50,24 @@ class ContactsPresenterImpl {
             self?.view.display(isLoading: false)
         }
     }
+    
+    func onSelectUser(user: User) {
+        router.showDetailContact(from: view, user: user)
+    }
+    
 }
 
 class ContactsPresenterImplTests: XCTestCase {
     
+    
     func test_init_doesNotExecuteInteractor() {
-        let (_, client, _) = makeSUT()
+        let (_, client, _, _) = makeSUT()
         
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
     func test_onLoad_deliversErrorWithAnyErrorMessage() {
-        let (sut, client, view) = makeSUT()
+        let (sut, client, view, _) = makeSUT()
         
         sut.onLoad()
         
@@ -65,7 +77,7 @@ class ContactsPresenterImplTests: XCTestCase {
     }
     
     func test_onLoad_deliversUsers() {
-        let (sut, client, view) = makeSUT()
+        let (sut, client, view, _) = makeSUT()
         
         sut.onLoad()
         
@@ -74,17 +86,28 @@ class ContactsPresenterImplTests: XCTestCase {
         
         XCTAssertTrue(!view.users.isEmpty)
     }
+    
+    func test_onSelectUser_shouldNavigate() {
+        let (sut, _, _, router) = makeSUT()
+        
+        let selectedUser = User(firstName: "Arifin", lastName: "Firdaus")
+        sut.onSelectUser(user: selectedUser)
+        
+        XCTAssertTrue(router.isShowDetailContactCalled)
+        XCTAssertEqual(router.user!, selectedUser)
+    }
 
     
     // MARK: - Helpers
     
-    private func makeSUT(url: URL = URL(string: "https://any-url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: ContactsPresenterImpl, client: HTTPClientSpy, view: ContactsViewSpy) {
+    private func makeSUT(url: URL = URL(string: "https://any-url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: ContactsPresenterImpl, client: HTTPClientSpy, view: ContactsViewSpy, router: ContactsRouterSpy) {
         let client = HTTPClientSpy()
         let service = ContactServiceImpl(client: client, url: url)
         let interactor = LoadContactsInteractorImpl(service: service)
         let view = ContactsViewSpy()
-        let sut = ContactsPresenterImpl(interactor: interactor, view: view)
-        return (sut, client, view)
+        let router = ContactsRouterSpy()
+        let sut = ContactsPresenterImpl(interactor: interactor, view: view, router: router)
+        return (sut, client, view, router)
     }
     
     private func makeJSONData(forResourceJsonName name: String) -> Data {
@@ -108,6 +131,16 @@ class ContactsPresenterImplTests: XCTestCase {
         
         func display(isLoading: Bool) {
             self.isLoading = isLoading
+        }
+    }
+    
+    private class ContactsRouterSpy: ContactsRouter {
+        var isShowDetailContactCalled = false
+        var user: User?
+        
+        func showDetailContact(from view: ContactsView, user: User) {
+            self.isShowDetailContactCalled = true
+            self.user = user
         }
     }
     
