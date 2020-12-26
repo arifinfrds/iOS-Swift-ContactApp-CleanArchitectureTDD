@@ -58,6 +58,11 @@ class ContactsPresenterImplTests: XCTestCase {
         let view = ContactsViewSpy()
         let router = ContactsRouterSpy()
         let sut = ContactsPresenterImpl(interactor: interactor, view: view, router: router)
+        trackForMemoryLeaks(instance: sut)
+        trackForMemoryLeaks(instance: service)
+        trackForMemoryLeaks(instance: client)
+        trackForMemoryLeaks(instance: view)
+        trackForMemoryLeaks(instance: router)
         return (sut, client, view, router)
     }
     
