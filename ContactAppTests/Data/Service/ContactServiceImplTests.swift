@@ -186,12 +186,6 @@ class ContactServiceImplTests: XCTestCase {
         return (sut, client)
     }
     
-    private func trackForMemoryLeaks(instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(instance, "Instance should have been deallocated. Potential memory leaks.", file: file, line: line)
-        }
-    }
-    
 }
 
 class HTTPClientSpy: HTTPClient {
