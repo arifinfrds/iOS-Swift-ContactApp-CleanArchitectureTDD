@@ -26,6 +26,7 @@
 		92A304892596D06D006E96CC /* LoadContactsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A304882596D06D006E96CC /* LoadContactsInteractorTests.swift */; };
 		92A3048D2596D09B006E96CC /* ContactsPresenterImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A3048C2596D09B006E96CC /* ContactsPresenterImplTests.swift */; };
 		92AA88B22596D33B009B3D35 /* XCTestCase+MemoryLeakTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA88B12596D33B009B3D35 /* XCTestCase+MemoryLeakTracker.swift */; };
+		92B4FD262596E9E500C82519 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B4FD252596E9E500C82519 /* URLSessionHTTPClientTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		92A304882596D06D006E96CC /* LoadContactsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadContactsInteractorTests.swift; sourceTree = "<group>"; };
 		92A3048C2596D09B006E96CC /* ContactsPresenterImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsPresenterImplTests.swift; sourceTree = "<group>"; };
 		92AA88B12596D33B009B3D35 /* XCTestCase+MemoryLeakTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracker.swift"; sourceTree = "<group>"; };
+		92B4FD252596E9E500C82519 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				92A3047C2596CFEC006E96CC /* ContactServiceImplTests.swift */,
+				92B4FD252596E9E500C82519 /* URLSessionHTTPClientTests.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 			files = (
 				92A3047D2596CFEC006E96CC /* ContactServiceImplTests.swift in Sources */,
 				92AA88B22596D33B009B3D35 /* XCTestCase+MemoryLeakTracker.swift in Sources */,
+				92B4FD262596E9E500C82519 /* URLSessionHTTPClientTests.swift in Sources */,
 				92A304892596D06D006E96CC /* LoadContactsInteractorTests.swift in Sources */,
 				92A3048D2596D09B006E96CC /* ContactsPresenterImplTests.swift in Sources */,
 			);
