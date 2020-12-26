@@ -31,7 +31,7 @@ class URLSessionHTTPClientTests: XCTestCase {
         URLProtocol.registerClass(URLProtocolStub.self)
         let url = URL(string: "https://any-url.com")!
         let givenError = NSError(domain: "Any Error", code: 1)
-        URLProtocolStub.stub(url: url, error: givenError)
+        URLProtocolStub.stub(url: url, data: nil, response: nil, error: givenError)
         
         let sut = URLSessionHTTPClient()
         
@@ -52,11 +52,13 @@ class URLSessionHTTPClientTests: XCTestCase {
         private static var stubs: [URL: Stub] = [:]
         
         private struct Stub {
+            let data: Data?
+            let response: URLResponse?
             let error: Error?
         }
         
-        static func stub(url: URL, error: Error) {
-            let stub = Stub(error: error)
+        static func stub(url: URL, data: Data?, response: URLResponse?, error: Error) {
+            let stub = Stub(data: data, response: response, error: error)
             stubs[url] = stub
         }
      
