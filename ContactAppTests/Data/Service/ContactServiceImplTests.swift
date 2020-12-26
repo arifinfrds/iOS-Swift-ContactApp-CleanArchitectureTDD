@@ -119,7 +119,7 @@ class ContactServiceImplTests: XCTestCase {
             case .success(let users):
                 capturedUsers = users
             case .failure(let error):
-                XCTFail("Expected success, but got error instead, erro: \(error)")
+                XCTFail("Expected success, but got error instead, error: \(error)")
             }
         }
         let emptyUsersJSONData = makeJSONData(forResourceJsonName: "users-empty")
@@ -140,7 +140,7 @@ class ContactServiceImplTests: XCTestCase {
             case .success(let users):
                 capturedUsers = users
             case .failure(let error):
-                XCTFail("Expected success, but got error instead, erro: \(error)")
+                XCTFail("Expected success, but got error instead, error: \(error)")
             }
         }
         let usersJSONData = makeJSONData(forResourceJsonName: "users")
