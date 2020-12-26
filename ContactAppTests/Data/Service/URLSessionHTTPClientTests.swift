@@ -32,19 +32,22 @@ class URLSessionHTTPClientTests: XCTestCase {
         let url = URL(string: "https://any-url.com")!
         let givenError = NSError(domain: "Any Error", code: 1)
         URLProtocolStub.stub(url: url, data: nil, response: nil, error: givenError)
-        
         let sut = URLSessionHTTPClient()
         
         // when
+        let exp = expectation(description: "Wait for completion")
         sut.get(from: url) { result in
             switch result {
             case .failure(let receivedError as NSError):
                 // then
-                XCTAssertEqual(receivedError, givenError)
+                XCTAssertEqual(receivedError.domain, givenError.domain)
+                XCTAssertEqual(receivedError.code, givenError.code)
             default:
                 XCTFail("Expected failure, but fot success instead.")
             }
+            exp.fulfill()
         }
+        wait(for: [exp], timeout: 1.0)
         URLProtocol.unregisterClass(URLProtocolStub.self)
     }
     
