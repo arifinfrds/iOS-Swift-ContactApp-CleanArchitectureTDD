@@ -12,65 +12,54 @@
 		924C455825753A20003E1B93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 924C455625753A20003E1B93 /* Main.storyboard */; };
 		924C455A25753A21003E1B93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 924C455925753A21003E1B93 /* Assets.xcassets */; };
 		924C455D25753A21003E1B93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 924C455B25753A21003E1B93 /* LaunchScreen.storyboard */; };
-		924C456825753A21003E1B93 /* ContactServiceImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924C456725753A21003E1B93 /* ContactServiceImplTests.swift */; };
-		924C457325753A21003E1B93 /* GojekContactAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924C457225753A21003E1B93 /* GojekContactAppUITests.swift */; };
 		9277A178257767BD0006CA17 /* ContactsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277A177257767BD0006CA17 /* ContactsPresenter.swift */; };
 		9277A17D257767FF0006CA17 /* ContactsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277A17C257767FF0006CA17 /* ContactsRouter.swift */; };
 		9277A182257768780006CA17 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277A181257768780006CA17 /* ContactsViewController.swift */; };
 		9277A18F25776E210006CA17 /* MockHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277A18E25776E210006CA17 /* MockHTTPClient.swift */; };
-		929E34722576BB31000C73D1 /* LoadContactsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929E34712576BB31000C73D1 /* LoadContactsInteractorTests.swift */; };
 		929E34842576BC62000C73D1 /* ContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929E34832576BC62000C73D1 /* ContactService.swift */; };
 		929E348D2576BC95000C73D1 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929E348C2576BC95000C73D1 /* HTTPClient.swift */; };
 		929E34992576C33D000C73D1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929E34982576C33D000C73D1 /* User.swift */; };
 		929E34A62576C37D000C73D1 /* LoadContactsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929E34A52576C37D000C73D1 /* LoadContactsInteractor.swift */; };
-		929E34BD2576C420000C73D1 /* ContactsPresenterImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929E34BC2576C420000C73D1 /* ContactsPresenterImplTests.swift */; };
-		92AB3AB82575F5AD006E5E87 /* users-empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 92AB3AB72575F5AD006E5E87 /* users-empty.json */; };
-		92AB3AC02575F84B006E5E87 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 92AB3ABF2575F84B006E5E87 /* users.json */; };
+		92A3047D2596CFEC006E96CC /* ContactServiceImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A3047C2596CFEC006E96CC /* ContactServiceImplTests.swift */; };
+		92A304812596D025006E96CC /* users-empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 92A304802596D025006E96CC /* users-empty.json */; };
+		92A304852596D048006E96CC /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 92A304842596D048006E96CC /* users.json */; };
+		92A304892596D06D006E96CC /* LoadContactsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A304882596D06D006E96CC /* LoadContactsInteractorTests.swift */; };
+		92A3048D2596D09B006E96CC /* ContactsPresenterImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A3048C2596D09B006E96CC /* ContactsPresenterImplTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		924C456425753A21003E1B93 /* PBXContainerItemProxy */ = {
+		92A304432596CE76006E96CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 924C454525753A20003E1B93 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 924C454C25753A20003E1B93;
-			remoteInfo = GojekContactApp;
-		};
-		924C456F25753A21003E1B93 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 924C454525753A20003E1B93 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 924C454C25753A20003E1B93;
-			remoteInfo = GojekContactApp;
+			remoteInfo = ContactApp;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		924C454D25753A20003E1B93 /* GojekContactApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GojekContactApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		924C454D25753A20003E1B93 /* ContactApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		924C455025753A20003E1B93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		924C455225753A20003E1B93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		924C455725753A20003E1B93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		924C455925753A21003E1B93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		924C455C25753A21003E1B93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		924C455E25753A21003E1B93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		924C456325753A21003E1B93 /* GojekContactAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GojekContactAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		924C456725753A21003E1B93 /* ContactServiceImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactServiceImplTests.swift; sourceTree = "<group>"; };
-		924C456925753A21003E1B93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		924C456E25753A21003E1B93 /* GojekContactAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GojekContactAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		924C457225753A21003E1B93 /* GojekContactAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GojekContactAppUITests.swift; sourceTree = "<group>"; };
-		924C457425753A21003E1B93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9277A177257767BD0006CA17 /* ContactsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsPresenter.swift; sourceTree = "<group>"; };
 		9277A17C257767FF0006CA17 /* ContactsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsRouter.swift; sourceTree = "<group>"; };
 		9277A181257768780006CA17 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		9277A18E25776E210006CA17 /* MockHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHTTPClient.swift; sourceTree = "<group>"; };
-		929E34712576BB31000C73D1 /* LoadContactsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadContactsInteractorTests.swift; sourceTree = "<group>"; };
 		929E34832576BC62000C73D1 /* ContactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactService.swift; sourceTree = "<group>"; };
 		929E348C2576BC95000C73D1 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		929E34982576C33D000C73D1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		929E34A52576C37D000C73D1 /* LoadContactsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadContactsInteractor.swift; sourceTree = "<group>"; };
-		929E34BC2576C420000C73D1 /* ContactsPresenterImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsPresenterImplTests.swift; sourceTree = "<group>"; };
-		92AB3AB72575F5AD006E5E87 /* users-empty.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "users-empty.json"; sourceTree = "<group>"; };
-		92AB3ABF2575F84B006E5E87 /* users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
+		92A3043E2596CE76006E96CC /* ContactAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		92A304422596CE76006E96CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92A3047C2596CFEC006E96CC /* ContactServiceImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactServiceImplTests.swift; sourceTree = "<group>"; };
+		92A304802596D025006E96CC /* users-empty.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "users-empty.json"; sourceTree = "<group>"; };
+		92A304842596D048006E96CC /* users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
+		92A304882596D06D006E96CC /* LoadContactsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadContactsInteractorTests.swift; sourceTree = "<group>"; };
+		92A3048C2596D09B006E96CC /* ContactsPresenterImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsPresenterImplTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,14 +70,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		924C456025753A21003E1B93 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		924C456B25753A21003E1B93 /* Frameworks */ = {
+		92A3043B2596CE76006E96CC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -101,9 +83,8 @@
 		924C454425753A20003E1B93 = {
 			isa = PBXGroup;
 			children = (
-				924C454F25753A20003E1B93 /* GojekContactApp */,
-				924C456625753A21003E1B93 /* GojekContactAppTests */,
-				924C457125753A21003E1B93 /* GojekContactAppUITests */,
+				924C454F25753A20003E1B93 /* ContactApp */,
+				92A3043F2596CE76006E96CC /* ContactAppTests */,
 				924C454E25753A20003E1B93 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -111,14 +92,13 @@
 		924C454E25753A20003E1B93 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				924C454D25753A20003E1B93 /* GojekContactApp.app */,
-				924C456325753A21003E1B93 /* GojekContactAppTests.xctest */,
-				924C456E25753A21003E1B93 /* GojekContactAppUITests.xctest */,
+				924C454D25753A20003E1B93 /* ContactApp.app */,
+				92A3043E2596CE76006E96CC /* ContactAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		924C454F25753A20003E1B93 /* GojekContactApp */ = {
+		924C454F25753A20003E1B93 /* ContactApp */ = {
 			isa = PBXGroup;
 			children = (
 				929E34972576C332000C73D1 /* Domain */,
@@ -127,29 +107,7 @@
 				9277A19C257783AE0006CA17 /* Application */,
 				924C455E25753A21003E1B93 /* Info.plist */,
 			);
-			path = GojekContactApp;
-			sourceTree = "<group>";
-		};
-		924C456625753A21003E1B93 /* GojekContactAppTests */ = {
-			isa = PBXGroup;
-			children = (
-				929E34B52576C3F3000C73D1 /* Domain */,
-				929E34AE2576C3EB000C73D1 /* Data */,
-				929E34C42576C428000C73D1 /* Presentation */,
-				924C456925753A21003E1B93 /* Info.plist */,
-				92AB3AB72575F5AD006E5E87 /* users-empty.json */,
-				92AB3ABF2575F84B006E5E87 /* users.json */,
-			);
-			path = GojekContactAppTests;
-			sourceTree = "<group>";
-		};
-		924C457125753A21003E1B93 /* GojekContactAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				924C457225753A21003E1B93 /* GojekContactAppUITests.swift */,
-				924C457425753A21003E1B93 /* Info.plist */,
-			);
-			path = GojekContactAppUITests;
+			path = ContactApp;
 			sourceTree = "<group>";
 		};
 		9277A175257767940006CA17 /* Scenes */ = {
@@ -241,36 +199,73 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
-		929E34AE2576C3EB000C73D1 /* Data */ = {
+		92A3043F2596CE76006E96CC /* ContactAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				924C456725753A21003E1B93 /* ContactServiceImplTests.swift */,
+				92A304922596D0FF006E96CC /* Domain */,
+				92A304912596D0FA006E96CC /* Data */,
+				92A304902596D0EE006E96CC /* Presentation */,
+				92A304422596CE76006E96CC /* Info.plist */,
+				92A3049D2596D140006E96CC /* Json */,
+			);
+			path = ContactAppTests;
+			sourceTree = "<group>";
+		};
+		92A304902596D0EE006E96CC /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				92A3048C2596D09B006E96CC /* ContactsPresenterImplTests.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		92A304912596D0FA006E96CC /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				92A304982596D12B006E96CC /* Service */,
 			);
 			path = Data;
 			sourceTree = "<group>";
 		};
-		929E34B52576C3F3000C73D1 /* Domain */ = {
+		92A304922596D0FF006E96CC /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				929E34712576BB31000C73D1 /* LoadContactsInteractorTests.swift */,
+				92A304932596D11E006E96CC /* Interactor */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		929E34C42576C428000C73D1 /* Presentation */ = {
+		92A304932596D11E006E96CC /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				929E34BC2576C420000C73D1 /* ContactsPresenterImplTests.swift */,
+				92A304882596D06D006E96CC /* LoadContactsInteractorTests.swift */,
 			);
-			path = Presentation;
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		92A304982596D12B006E96CC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				92A3047C2596CFEC006E96CC /* ContactServiceImplTests.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		92A3049D2596D140006E96CC /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				92A304802596D025006E96CC /* users-empty.json */,
+				92A304842596D048006E96CC /* users.json */,
+			);
+			path = Json;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		924C454C25753A20003E1B93 /* GojekContactApp */ = {
+		924C454C25753A20003E1B93 /* ContactApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 924C457725753A21003E1B93 /* Build configuration list for PBXNativeTarget "GojekContactApp" */;
+			buildConfigurationList = 924C457725753A21003E1B93 /* Build configuration list for PBXNativeTarget "ContactApp" */;
 			buildPhases = (
 				924C454925753A20003E1B93 /* Sources */,
 				924C454A25753A20003E1B93 /* Frameworks */,
@@ -280,46 +275,28 @@
 			);
 			dependencies = (
 			);
-			name = GojekContactApp;
+			name = ContactApp;
 			productName = GojekContactApp;
-			productReference = 924C454D25753A20003E1B93 /* GojekContactApp.app */;
+			productReference = 924C454D25753A20003E1B93 /* ContactApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		924C456225753A21003E1B93 /* GojekContactAppTests */ = {
+		92A3043D2596CE76006E96CC /* ContactAppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 924C457A25753A21003E1B93 /* Build configuration list for PBXNativeTarget "GojekContactAppTests" */;
+			buildConfigurationList = 92A304452596CE76006E96CC /* Build configuration list for PBXNativeTarget "ContactAppTests" */;
 			buildPhases = (
-				924C455F25753A21003E1B93 /* Sources */,
-				924C456025753A21003E1B93 /* Frameworks */,
-				924C456125753A21003E1B93 /* Resources */,
+				92A3043A2596CE76006E96CC /* Sources */,
+				92A3043B2596CE76006E96CC /* Frameworks */,
+				92A3043C2596CE76006E96CC /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				924C456525753A21003E1B93 /* PBXTargetDependency */,
+				92A304442596CE76006E96CC /* PBXTargetDependency */,
 			);
-			name = GojekContactAppTests;
-			productName = GojekContactAppTests;
-			productReference = 924C456325753A21003E1B93 /* GojekContactAppTests.xctest */;
+			name = ContactAppTests;
+			productName = ContactAppTests;
+			productReference = 92A3043E2596CE76006E96CC /* ContactAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		924C456D25753A21003E1B93 /* GojekContactAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 924C457D25753A21003E1B93 /* Build configuration list for PBXNativeTarget "GojekContactAppUITests" */;
-			buildPhases = (
-				924C456A25753A21003E1B93 /* Sources */,
-				924C456B25753A21003E1B93 /* Frameworks */,
-				924C456C25753A21003E1B93 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				924C457025753A21003E1B93 /* PBXTargetDependency */,
-			);
-			name = GojekContactAppUITests;
-			productName = GojekContactAppUITests;
-			productReference = 924C456E25753A21003E1B93 /* GojekContactAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -327,23 +304,19 @@
 		924C454525753A20003E1B93 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1220;
+				LastSwiftUpdateCheck = 1230;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
 					924C454C25753A20003E1B93 = {
 						CreatedOnToolsVersion = 12.2;
 					};
-					924C456225753A21003E1B93 = {
-						CreatedOnToolsVersion = 12.2;
-						TestTargetID = 924C454C25753A20003E1B93;
-					};
-					924C456D25753A21003E1B93 = {
-						CreatedOnToolsVersion = 12.2;
+					92A3043D2596CE76006E96CC = {
+						CreatedOnToolsVersion = 12.3;
 						TestTargetID = 924C454C25753A20003E1B93;
 					};
 				};
 			};
-			buildConfigurationList = 924C454825753A20003E1B93 /* Build configuration list for PBXProject "GojekContactApp" */;
+			buildConfigurationList = 924C454825753A20003E1B93 /* Build configuration list for PBXProject "ContactApp" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -356,9 +329,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				924C454C25753A20003E1B93 /* GojekContactApp */,
-				924C456225753A21003E1B93 /* GojekContactAppTests */,
-				924C456D25753A21003E1B93 /* GojekContactAppUITests */,
+				924C454C25753A20003E1B93 /* ContactApp */,
+				92A3043D2596CE76006E96CC /* ContactAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -374,19 +346,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		924C456125753A21003E1B93 /* Resources */ = {
+		92A3043C2596CE76006E96CC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92AB3AC02575F84B006E5E87 /* users.json in Resources */,
-				92AB3AB82575F5AD006E5E87 /* users-empty.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		924C456C25753A21003E1B93 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				92A304852596D048006E96CC /* users.json in Resources */,
+				92A304812596D025006E96CC /* users-empty.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,36 +375,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		924C455F25753A21003E1B93 /* Sources */ = {
+		92A3043A2596CE76006E96CC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				924C456825753A21003E1B93 /* ContactServiceImplTests.swift in Sources */,
-				929E34BD2576C420000C73D1 /* ContactsPresenterImplTests.swift in Sources */,
-				929E34722576BB31000C73D1 /* LoadContactsInteractorTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		924C456A25753A21003E1B93 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				924C457325753A21003E1B93 /* GojekContactAppUITests.swift in Sources */,
+				92A3047D2596CFEC006E96CC /* ContactServiceImplTests.swift in Sources */,
+				92A304892596D06D006E96CC /* LoadContactsInteractorTests.swift in Sources */,
+				92A3048D2596D09B006E96CC /* ContactsPresenterImplTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		924C456525753A21003E1B93 /* PBXTargetDependency */ = {
+		92A304442596CE76006E96CC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 924C454C25753A20003E1B93 /* GojekContactApp */;
-			targetProxy = 924C456425753A21003E1B93 /* PBXContainerItemProxy */;
-		};
-		924C457025753A21003E1B93 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 924C454C25753A20003E1B93 /* GojekContactApp */;
-			targetProxy = 924C456F25753A21003E1B93 /* PBXContainerItemProxy */;
+			target = 924C454C25753A20003E1B93 /* ContactApp */;
+			targetProxy = 92A304432596CE76006E96CC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -585,12 +537,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = GojekContactApp/Info.plist;
+				INFOPLIST_FILE = ContactApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.arifinfrds.GojekContactApp;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.arifinfrds.ContactApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -603,102 +555,62 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = GojekContactApp/Info.plist;
+				INFOPLIST_FILE = ContactApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.arifinfrds.GojekContactApp;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.arifinfrds.ContactApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		924C457B25753A21003E1B93 /* Debug */ = {
+		92A304462596CE76006E96CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = GojekContactAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				INFOPLIST_FILE = ContactAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.arifinfrds.GojekContactAppTests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.arifinfrds.ContactAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GojekContactApp.app/GojekContactApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ContactApp.app/ContactApp";
 			};
 			name = Debug;
 		};
-		924C457C25753A21003E1B93 /* Release */ = {
+		92A304472596CE76006E96CC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = GojekContactAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				INFOPLIST_FILE = ContactAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.arifinfrds.GojekContactAppTests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.arifinfrds.ContactAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GojekContactApp.app/GojekContactApp";
-			};
-			name = Release;
-		};
-		924C457E25753A21003E1B93 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = GojekContactAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.arifinfrds.GojekContactAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = GojekContactApp;
-			};
-			name = Debug;
-		};
-		924C457F25753A21003E1B93 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = GojekContactAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.arifinfrds.GojekContactAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = GojekContactApp;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ContactApp.app/ContactApp";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		924C454825753A20003E1B93 /* Build configuration list for PBXProject "GojekContactApp" */ = {
+		924C454825753A20003E1B93 /* Build configuration list for PBXProject "ContactApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				924C457525753A21003E1B93 /* Debug */,
@@ -707,7 +619,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		924C457725753A21003E1B93 /* Build configuration list for PBXNativeTarget "GojekContactApp" */ = {
+		924C457725753A21003E1B93 /* Build configuration list for PBXNativeTarget "ContactApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				924C457825753A21003E1B93 /* Debug */,
@@ -716,20 +628,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		924C457A25753A21003E1B93 /* Build configuration list for PBXNativeTarget "GojekContactAppTests" */ = {
+		92A304452596CE76006E96CC /* Build configuration list for PBXNativeTarget "ContactAppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				924C457B25753A21003E1B93 /* Debug */,
-				924C457C25753A21003E1B93 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		924C457D25753A21003E1B93 /* Build configuration list for PBXNativeTarget "GojekContactAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				924C457E25753A21003E1B93 /* Debug */,
-				924C457F25753A21003E1B93 /* Release */,
+				92A304462596CE76006E96CC /* Debug */,
+				92A304472596CE76006E96CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

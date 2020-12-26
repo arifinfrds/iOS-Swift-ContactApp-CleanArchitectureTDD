@@ -1,13 +1,12 @@
 //
 //  LoadContactsInteractorTests.swift
-//  GojekContactAppTests
+//  ContactAppTests
 //
-//  Created by Arifin Firdaus on 02/12/20.
+//  Created by Arifin Firdaus on 26/12/20.
 //
 
 import XCTest
-@testable import GojekContactApp
-
+@testable import ContactApp
 
 class LoadContactsInteractorTests: XCTestCase {
     
@@ -70,3 +69,4 @@ class LoadContactsInteractorTests: XCTestCase {
         return data
     }
 }
+

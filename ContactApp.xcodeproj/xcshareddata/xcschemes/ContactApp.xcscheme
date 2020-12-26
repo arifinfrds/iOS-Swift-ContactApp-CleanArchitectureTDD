@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "924C454C25753A20003E1B93"
-               BuildableName = "GojekContactApp.app"
-               BlueprintName = "GojekContactApp"
-               ReferencedContainer = "container:GojekContactApp.xcodeproj">
+               BuildableName = "ContactApp.app"
+               BlueprintName = "ContactApp"
+               ReferencedContainer = "container:ContactApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,9 +34,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "924C456225753A21003E1B93"
-               BuildableName = "GojekContactAppTests.xctest"
-               BlueprintName = "GojekContactAppTests"
-               ReferencedContainer = "container:GojekContactApp.xcodeproj">
+               BuildableName = "ContactAppTests.xctest"
+               BlueprintName = "ContactAppTests"
+               ReferencedContainer = "container:ContactApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -44,9 +44,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "924C456D25753A21003E1B93"
-               BuildableName = "GojekContactAppUITests.xctest"
-               BlueprintName = "GojekContactAppUITests"
-               ReferencedContainer = "container:GojekContactApp.xcodeproj">
+               BuildableName = "ContactAppUITests.xctest"
+               BlueprintName = "ContactAppUITests"
+               ReferencedContainer = "container:ContactApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "924C454C25753A20003E1B93"
-            BuildableName = "GojekContactApp.app"
-            BlueprintName = "GojekContactApp"
-            ReferencedContainer = "container:GojekContactApp.xcodeproj">
+            BuildableName = "ContactApp.app"
+            BlueprintName = "ContactApp"
+            ReferencedContainer = "container:ContactApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -83,9 +83,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "924C454C25753A20003E1B93"
-            BuildableName = "GojekContactApp.app"
-            BlueprintName = "GojekContactApp"
-            ReferencedContainer = "container:GojekContactApp.xcodeproj">
+            BuildableName = "ContactApp.app"
+            BlueprintName = "ContactApp"
+            ReferencedContainer = "container:ContactApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

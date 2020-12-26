@@ -1,12 +1,12 @@
 //
 //  ContactServiceImplTests.swift
-//  GojekContactAppTests
+//  ContactAppTests
 //
 //  Created by Arifin Firdaus on 30/11/20.
 //
 
 import XCTest
-@testable import GojekContactApp
+@testable import ContactApp
 
 class ContactServiceImplTests: XCTestCase {
     
