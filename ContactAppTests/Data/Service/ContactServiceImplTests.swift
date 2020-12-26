@@ -182,7 +182,7 @@ class ContactServiceImplTests: XCTestCase {
         let client = HTTPClientSpy()
         let sut = ContactServiceImpl(client: client, url: url)
         // trackForMemoryLeaks(instance: client, file: file, line: line)
-        // trackForMemoryLeaks(instance: sut, file: file, line: line)
+        trackForMemoryLeaks(instance: sut, file: file, line: line)
         return (sut, client)
     }
     
