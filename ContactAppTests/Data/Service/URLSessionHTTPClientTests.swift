@@ -28,8 +28,11 @@ class URLSessionHTTPClientTests: XCTestCase {
     
     func test_getFromURL_deliversAnyError() {
         // given
+        URLProtocol.registerClass(URLProtocolStub.self)
         let url = URL(string: "https://any-url.com")!
         let givenError = NSError(domain: "Any Error", code: 1)
+        URLProtocolStub.stub(url: url, error: givenError)
+        
         let sut = URLSessionHTTPClient()
         
         // when
@@ -42,8 +45,42 @@ class URLSessionHTTPClientTests: XCTestCase {
                 XCTFail("Expected failure, but fot success instead.")
             }
         }
+        URLProtocol.unregisterClass(URLProtocolStub.self)
+    }
+    
+    private class URLProtocolStub: URLProtocol {
+        private static var stubs: [URL: Stub] = [:]
         
+        private struct Stub {
+            let error: Error?
+        }
         
+        static func stub(url: URL, error: Error) {
+            let stub = Stub(error: error)
+            stubs[url] = stub
+        }
+     
+        override class func canInit(with request: URLRequest) -> Bool {
+            guard let url = request.url else {
+                return false
+            }
+            if URLProtocolStub.stubs[url] == nil {
+                return false
+            }
+            return true
+        }
+        
+        override class func canonicalRequest(for request: URLRequest) -> URLRequest {
+            return request
+        }
+        
+        override func startLoading() {
+            if let url = self.request.url, let error = URLProtocolStub.stubs[url]?.error {
+                self.client?.urlProtocol(self, didFailWithError: error)
+            }
+        }
+        
+        override func stopLoading() { }
     }
 
 }
