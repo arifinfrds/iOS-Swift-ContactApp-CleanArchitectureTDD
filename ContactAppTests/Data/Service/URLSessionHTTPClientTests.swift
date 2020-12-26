@@ -51,6 +51,9 @@ class URLSessionHTTPClientTests: XCTestCase {
         URLProtocol.unregisterClass(URLProtocolStub.self)
     }
     
+    
+    // MARK: - Helpers
+    
     private class URLProtocolStub: URLProtocol {
         private static var stubs: [URL: Stub] = [:]
         
