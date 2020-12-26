@@ -25,6 +25,7 @@
 		92A304852596D048006E96CC /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 92A304842596D048006E96CC /* users.json */; };
 		92A304892596D06D006E96CC /* LoadContactsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A304882596D06D006E96CC /* LoadContactsInteractorTests.swift */; };
 		92A3048D2596D09B006E96CC /* ContactsPresenterImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A3048C2596D09B006E96CC /* ContactsPresenterImplTests.swift */; };
+		92AA88B22596D33B009B3D35 /* XCTestCase+MemoryLeakTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA88B12596D33B009B3D35 /* XCTestCase+MemoryLeakTracker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		92A304842596D048006E96CC /* users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
 		92A304882596D06D006E96CC /* LoadContactsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadContactsInteractorTests.swift; sourceTree = "<group>"; };
 		92A3048C2596D09B006E96CC /* ContactsPresenterImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsPresenterImplTests.swift; sourceTree = "<group>"; };
+		92AA88B12596D33B009B3D35 /* XCTestCase+MemoryLeakTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracker.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 		92A3043F2596CE76006E96CC /* ContactAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				92AA88B02596D329009B3D35 /* Helpers */,
 				92A304922596D0FF006E96CC /* Domain */,
 				92A304912596D0FA006E96CC /* Data */,
 				92A304902596D0EE006E96CC /* Presentation */,
@@ -258,6 +261,14 @@
 				92A304842596D048006E96CC /* users.json */,
 			);
 			path = Json;
+			sourceTree = "<group>";
+		};
+		92AA88B02596D329009B3D35 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				92AA88B12596D33B009B3D35 /* XCTestCase+MemoryLeakTracker.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,6 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92A3047D2596CFEC006E96CC /* ContactServiceImplTests.swift in Sources */,
+				92AA88B22596D33B009B3D35 /* XCTestCase+MemoryLeakTracker.swift in Sources */,
 				92A304892596D06D006E96CC /* LoadContactsInteractorTests.swift in Sources */,
 				92A3048D2596D09B006E96CC /* ContactsPresenterImplTests.swift in Sources */,
 			);

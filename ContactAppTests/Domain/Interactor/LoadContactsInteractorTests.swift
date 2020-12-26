@@ -60,6 +60,9 @@ class LoadContactsInteractorTests: XCTestCase {
         let client = HTTPClientSpy()
         let service = ContactServiceImpl(client: client, url: url)
         let sut = LoadContactsInteractorImpl(service: service)
+        trackForMemoryLeaks(instance: sut)
+        trackForMemoryLeaks(instance: service)
+        trackForMemoryLeaks(instance: client)
         return (sut, client)
     }
     
