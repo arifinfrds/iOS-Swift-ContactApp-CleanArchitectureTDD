@@ -51,13 +51,11 @@ class URLSessionHTTPClientTests: XCTestCase {
     }
     
     func test_getFromURL_failsOnAnyInvalidRepresentableCases() {
-        let givenError = NSError(domain: "Any Error", code: 1)
-        XCTAssertNotNil(getResultFor(data: nil, response: nil, error: givenError))
+        XCTAssertNotNil(getResultFor(data: nil, response: nil, error: makeAnyError()))
     }
     
     
     // MARK: - Helpers
-    
     
     private func getResultFor(data: Data?, response: URLResponse?, error: Error?) -> HTTPClientResult? {
         URLProtocolStub.stub(data: data, response: response, error: error)
@@ -74,6 +72,9 @@ class URLSessionHTTPClientTests: XCTestCase {
         return receivedResult
     }
     
+    private func makeAnyError() -> NSError {
+        return NSError(domain: "Any Error", code: 1)
+    }
     
     private func makeAnyURL() -> URL {
         return URL(string: "https://any-url.com")!
