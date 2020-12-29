@@ -51,7 +51,7 @@ class URLSessionHTTPClientTests: XCTestCase {
     }
     
     func test_getFromURL_failsOnAnyInvalidRepresentableCases() {
-        XCTAssertNotNil(getResultFor(data: nil, response: nil, error: makeAnyError()))
+        XCTAssertNotNil(getResultFor(data: nil, response: nil, error: makeAnyNSError()))
     }
     
     
@@ -72,7 +72,7 @@ class URLSessionHTTPClientTests: XCTestCase {
         return receivedResult
     }
     
-    private func makeAnyError() -> NSError {
+    private func makeAnyNSError() -> NSError {
         return NSError(domain: "Any Error", code: 1)
     }
     
