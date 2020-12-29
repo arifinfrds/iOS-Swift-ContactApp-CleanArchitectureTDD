@@ -50,30 +50,30 @@ class URLSessionHTTPClientTests: XCTestCase {
         sut.get(from: url) { _ in }
     }
     
-    func test_getFromURL_failsOnRequestError() {
-        // given
+    func test_getFromURL_failsOnAnyInvalidRepresentableCases() {
         let givenError = NSError(domain: "Any Error", code: 1)
-        URLProtocolStub.stub(data: nil, response: nil, error: givenError)
-        let sut = URLSessionHTTPClient()
-        
-        // when
-        let exp = expectation(description: "Wait for completion")
-        sut.get(from: makeAnyURL()) { result in
-            switch result {
-            case .failure(let receivedError as NSError):
-                // then
-                XCTAssertEqual(receivedError.domain, givenError.domain)
-                XCTAssertEqual(receivedError.code, givenError.code)
-            default:
-                XCTFail("Expected failure, but fot success instead.")
-            }
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 1.0)
+        XCTAssertNotNil(getResultFor(data: nil, response: nil, error: givenError))
     }
     
     
     // MARK: - Helpers
+    
+    
+    private func getResultFor(data: Data?, response: URLResponse?, error: Error?) -> HTTPClientResult? {
+        URLProtocolStub.stub(data: data, response: response, error: error)
+        let sut = URLSessionHTTPClient()
+        
+        // when
+        let exp = expectation(description: "Wait for completion")
+        var receivedResult: HTTPClientResult?
+        sut.get(from: makeAnyURL()) { result in
+            receivedResult = result
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
+        return receivedResult
+    }
+    
     
     private func makeAnyURL() -> URL {
         return URL(string: "https://any-url.com")!
@@ -89,7 +89,7 @@ class URLSessionHTTPClientTests: XCTestCase {
             let error: Error?
         }
         
-        static func stub(data: Data?, response: URLResponse?, error: Error) {
+        static func stub(data: Data?, response: URLResponse?, error: Error?) {
             let stub = Stub(data: data, response: response, error: error)
             self.stub = stub
         }
