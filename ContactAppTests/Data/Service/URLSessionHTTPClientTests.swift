@@ -59,17 +59,20 @@ class URLSessionHTTPClientTests: XCTestCase {
     
     private func getResultFor(data: Data?, response: URLResponse?, error: Error?) -> HTTPClientResult? {
         URLProtocolStub.stub(data: data, response: response, error: error)
-        let sut = URLSessionHTTPClient()
         
         // when
         let exp = expectation(description: "Wait for completion")
         var receivedResult: HTTPClientResult?
-        sut.get(from: makeAnyURL()) { result in
+        makeSUT().get(from: makeAnyURL()) { result in
             receivedResult = result
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1.0)
         return receivedResult
+    }
+    
+    private func makeSUT() -> URLSessionHTTPClient {
+        return URLSessionHTTPClient()
     }
     
     private func makeAnyNSError() -> NSError {
