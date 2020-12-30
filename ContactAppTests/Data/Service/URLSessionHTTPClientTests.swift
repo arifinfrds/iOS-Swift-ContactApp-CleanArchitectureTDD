@@ -127,21 +127,16 @@ class URLSessionHTTPClientTests: XCTestCase {
     }
     
     private func resultForError(data: Data?, response: URLResponse?, error: Error?, file: StaticString = #filePath, line: UInt = #line) -> Error? {
-        URLProtocolStub.stub(data: data, response: response, error: error)
+        // when
+        let result = resultFor(data: data, response: response, error: error)
         
-        let exp = expectation(description: "wait for completion")
-        var capturedError: Error?
-        makeSUT().get(from: makeAnyURL()) { result in
-            switch result {
-            case let .failure(error):
-                capturedError = error
-            default:
-                XCTFail("Expect failure with error, but result instead, result: \(result)")
-            }
-            exp.fulfill()
+        // then
+        switch result {
+        case .failure(let error):
+            return error
+        default:
+            return nil
         }
-        wait(for: [exp], timeout: 1.0)
-        return capturedError
     }
     
     private func resultFor(data: Data?, response: URLResponse?, error: Error?, file: StaticString = #filePath, line: UInt = #line) -> HTTPClientResult? {
