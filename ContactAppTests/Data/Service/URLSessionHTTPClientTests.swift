@@ -104,7 +104,6 @@ class URLSessionHTTPClientTests: XCTestCase {
     
     private func resultValuesFor(data: Data?, response: URLResponse?, error: Error?, file: StaticString = #filePath, line: UInt = #line) -> (data: Data, response: HTTPURLResponse)? {
         // given
-        URLProtocolStub.stub(data: data, response: response, error: error)
         var capturedData: Data?
         var capturedResponse: HTTPURLResponse?
         
