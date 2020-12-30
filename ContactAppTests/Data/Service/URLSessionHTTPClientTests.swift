@@ -71,6 +71,26 @@ class URLSessionHTTPClientTests: XCTestCase {
         XCTAssertNotNil(resultForError(data: makeAnyData(), response: makeNonHTTPURLResponse(), error: nil))
     }
     
+    func test_getFromURL_succedsOnHTTPURLResponseWithData() {
+        // given
+        let givenData = makeAnyData()
+        let givenHTTPURLResponse = makeAnyHTTPURLResponse()
+        URLProtocolStub.stub(data: givenData, response: givenHTTPURLResponse, error: nil)
+        let sut = makeSUT()
+        
+        // when
+        sut.get(from: makeAnyURL()) { result in
+            switch result {
+            case let .success(data, response):
+                // then
+                XCTAssertEqual(data, givenData)
+                XCTAssertEqual(response, givenHTTPURLResponse)
+            default:
+                XCTFail("Expect success with result \(result), got failure instead.")
+            }
+        }
+    }
+    
     
     // MARK: - Helpers
     
