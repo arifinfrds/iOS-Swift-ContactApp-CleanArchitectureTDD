@@ -209,6 +209,6 @@ class HTTPClientSpy: HTTPClient {
             httpVersion: nil,
             headerFields: nil
         )!
-        messages[index].completion(.success(response, data))
+        messages[index].completion(.success(data, response))
     }
 }

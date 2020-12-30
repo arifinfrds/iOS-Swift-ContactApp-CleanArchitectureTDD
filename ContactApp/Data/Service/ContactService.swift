@@ -51,7 +51,7 @@ class ContactServiceImpl: ContactService {
             guard self != nil else { return }
             
             switch result {
-            case .success(let response, let data):
+            case .success(let data, let response):
                 completion(LoadContactsMapper.map(response, data: data))
             case .failure(_):
                 completion(.failure(.connectivity))

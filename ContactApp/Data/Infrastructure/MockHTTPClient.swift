@@ -20,7 +20,7 @@ class MockHTTPClient: HTTPClient {
             UserResponseDTO(firstName: "SomePersonName", lastName: "SomeLastName")
         ]
         let data = try! JSONEncoder().encode(users)
-        completion(.success(response, data))
+        completion(.success(data, response))
     }
 
 }
