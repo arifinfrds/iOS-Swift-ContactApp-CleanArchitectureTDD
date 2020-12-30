@@ -27,6 +27,7 @@
 		92A3048D2596D09B006E96CC /* ContactsPresenterImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A3048C2596D09B006E96CC /* ContactsPresenterImplTests.swift */; };
 		92AA88B22596D33B009B3D35 /* XCTestCase+MemoryLeakTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA88B12596D33B009B3D35 /* XCTestCase+MemoryLeakTracker.swift */; };
 		92B4FD262596E9E500C82519 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B4FD252596E9E500C82519 /* URLSessionHTTPClientTests.swift */; };
+		92BF1F06259C32D80047BEFB /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BF1F05259C32D80047BEFB /* URLSessionHTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		92A3048C2596D09B006E96CC /* ContactsPresenterImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsPresenterImplTests.swift; sourceTree = "<group>"; };
 		92AA88B12596D33B009B3D35 /* XCTestCase+MemoryLeakTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracker.swift"; sourceTree = "<group>"; };
 		92B4FD252596E9E500C82519 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
+		92BF1F05259C32D80047BEFB /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 			children = (
 				929E348C2576BC95000C73D1 /* HTTPClient.swift */,
 				9277A18E25776E210006CA17 /* MockHTTPClient.swift */,
+				92BF1F05259C32D80047BEFB /* URLSessionHTTPClient.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				929E348D2576BC95000C73D1 /* HTTPClient.swift in Sources */,
 				929E34992576C33D000C73D1 /* User.swift in Sources */,
 				924C455125753A20003E1B93 /* AppDelegate.swift in Sources */,
+				92BF1F06259C32D80047BEFB /* URLSessionHTTPClient.swift in Sources */,
 				929E34A62576C37D000C73D1 /* LoadContactsInteractor.swift in Sources */,
 				924C455325753A20003E1B93 /* SceneDelegate.swift in Sources */,
 				9277A18F25776E210006CA17 /* MockHTTPClient.swift in Sources */,
